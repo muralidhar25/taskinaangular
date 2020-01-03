@@ -1,0 +1,234 @@
+<header class="xs-header header-transparent index">
+    <div class="container">
+        <nav class="xs-menus clearfix xs_nav-portrait">
+            <div class="nav-header">
+               
+                <a class="nav-brand" routerLink="/" >
+                    <img src="assets/images/logo.png" alt="">
+                </a>
+                <div class="nav-toggle" (click)="toggle(true)"></div>
+            </div>
+            <div class="nav-menus-wrapper align-to-left"
+            [ngClass]="{ 'nav-menus-wrapper-open': isToggle }">
+
+            <span class="nav-menus-wrapper-close-button" (click)="toggle(false)">✕</span>
+                <ul class="nav-menu">
+                    <li><a class="active-padd" (click)="postTaskDialog()">Post a Task</a>
+                    </li>
+                    <li class="categories-menu headerMenu"  >
+                       
+                        <a style="cursor: pointer;" (click) = "getcategory()" class="">Categories
+                            <span class="submenu-indicator"><span class="submenu-indicator-chevron"></span></span>
+                        </a>
+                        <div class="xs-icon-menu megamenu">
+                            <div class="mmenu-title">
+                                <span class="mmenu-sub-title">What are you looking for?</span>
+                                <span class="mmenu-sub-line">Pick a type of task.</span>
+                            </div>
+                            <div class="acc-menu">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="nav-item tasker-links">
+                                        <a class="nav-link active" href="#tasker" role="tab" data-toggle="tab">AS A
+                                            TASKER <span class="tab-sub-line">I'm looking for work in ...</span></a>
+                                    </li>
+                                    <li class="nav-item poster-links">
+                                        <a class="nav-link" href="#poster" role="tab" data-toggle="tab">AS A POSTER<span
+                                                class="tab-sub-line">I need to hire someone for ...</span></a>
+                                    </li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane fade in active" id="tasker">
+                                        <ul>
+                                            <li>
+                                                <a href="" class="start-word">Accounting</a>
+                                                <a href="">Admin</a>
+                                                <a href="">Aircon Installation</a>
+                                                <a href="">Appliance Repair</a>
+                                                <a href="">Asbestos Removal</a>
+                                                <a href="">Assembly</a>
+                                                <a href="">Automotive</a>
+                                                <a href="" class="start-word">Bathroom Renovations</a>
+                                                <a href="">Bricklaying</a>
+                                                <a href="">Babysitting</a>
+                                                <a href="" class="start-word">Cabinet Making</a>
+                                                <a href="">Carpentry</a>
+                                                <a href="">Carpet Cleaning</a>
+                                                <a href="">Catering</a>
+                                            </li>
+                                            <li>
+                                                <a href="">Chef</a>
+                                                <a href="">Commercial Cleaning</a>
+                                                <a href="">Computer Repair</a>
+                                                <a href="">Concreting</a>
+                                                <a href="">Copywriting</a>
+                                                <a href="" class="start-word">Decking</a>
+                                                <a href="">Delivery</a>
+                                                <a href="">Demolition</a>
+                                                <a href="">Dog Walking</a>
+                                                <a href="">Drafting</a>
+                                                <a href="" class="start-word">Electricians</a>
+                                                <a href="">End Of Lease Clea…</a>
+                                                <a href="">Event Planning</a>
+                                            </li>
+                                            <li>
+                                                <a href="" class="start-word">Fencing</a>
+                                                <a href="">Furniture Assembly</a>
+                                                <a href="" class="start-word">Garden Clean Up</a>
+                                                <a href="">Gardening</a>
+                                                <a href="">Graphic Design</a>
+                                                <a href="">Gutter Cleaning</a>
+                                                <a href="" class="start-word">Hairdressing</a>
+                                                <a href="">Handyman</a>
+                                                <a href="">Home Chef</a>
+                                                <a href="">Home Theatre</a>
+                                                <a href="">House Painting</a>
+                                                <a href="" class="start-word">Insulation</a>
+                                                <a href="">Interior Designing</a>
+                                            </li>
+                                            <li>
+                                                <a href="">Insulation</a>
+                                                <a href="">Interior Designing</a>
+                                                <a href="" class="start-word">Landscaping</a>
+                                                <a href="">Lawn Mowing</a>
+                                                <a href="">Locksmith</a>
+                                                <a href="" class="start-word">Makeup Artist</a>
+                                                <a href="">Mechanics</a>
+                                                <a href="" class="start-word">Painting</a>
+                                                <a href="">Patios</a>
+                                                <a href="">Personal Training</a>
+                                                <a href="">Pest Control</a>
+                                                <a href="">Pet Grooming</a>
+                                                <a href="">Pet-Care</a>
+                                                <a href="">Photography</a>
+                                            </li>
+                                            <li>
+                                                <a href="">Plastering</a>
+                                                <a href="">Plumbing</a>
+                                                <a href="">Pool Cleaning</a>
+                                                <a href="">Pool Fencing</a>
+                                                <a href="" class="start-word">Removalists</a>
+                                                <a href="">Roofing</a>
+                                                <a href="">Rubbish Removal</a>
+                                                <a href="" class="start-word">Spray Tanning</a>
+                                                <a href="" class="start-word">Tiling</a>
+                                                <a href="">Tutoring</a>
+                                                <a href="" class="start-word">Van Removals</a>
+                                                <a href="" class="start-word">Web Design</a>
+                                                <a href="">Wordpress Devel</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="poster">
+                                        <ul>
+                                            <li>
+                                                <a href="" class="start-word">Accounting</a>
+                                                <a href="">Admin</a>
+                                                <a href="">Aircon Installation</a>
+                                                <a href="">Appliance Repair</a>
+                                                <a href="">Asbestos Removal</a>
+                                                <a href="">Assembly</a>
+                                                <a href="">Automotive</a>
+                                                <a href="" class="start-word">Bathroom Renovations</a>
+                                                <a href="">Bricklaying</a>
+                                                <a href="">Babysitting</a>
+                                                <a href="" class="start-word">Cabinet Making</a>
+                                                <a href="">Carpentry</a>
+                                                <a href="">Carpet Cleaning</a>
+                                                <a href="">Catering</a>
+                                            </li>
+                                            <li>
+                                                <a href="">Chef</a>
+                                                <a href="">Commercial Cleaning</a>
+                                                <a href="">Computer Repair</a>
+                                                <a href="">Concreting</a>
+                                                <a href="">Copywriting</a>
+                                                <a href="" class="start-word">Decking</a>
+                                                <a href="">Delivery</a>
+                                                <a href="">Demolition</a>
+                                                <a href="">Dog Walking</a>
+                                                <a href="">Drafting</a>
+                                                <a href="" class="start-word">Electricians</a>
+                                                <a href="">End Of Lease Clea…</a>
+                                                <a href="">Event Planning</a>
+                                            </li>
+                                            <li>
+                                                <a href="" class="start-word">Fencing</a>
+                                                <a href="">Furniture Assembly</a>
+                                                <a href="" class="start-word">Garden Clean Up</a>
+                                                <a href="">Gardening</a>
+                                                <a href="">Graphic Design</a>
+                                                <a href="">Gutter Cleaning</a>
+                                                <a href="" class="start-word">Hairdressing</a>
+                                                <a href="">Handyman</a>
+                                                <a href="">Home Chef</a>
+                                                <a href="">Home Theatre</a>
+                                                <a href="">House Painting</a>
+                                                <a href="" class="start-word">Insulation</a>
+                                                <a href="">Interior Designing</a>
+                                            </li>
+                                            <li>
+                                                <a href="">Insulation</a>
+                                                <a href="">Interior Designing</a>
+                                                <a href="" class="start-word">Landscaping</a>
+                                                <a href="">Lawn Mowing</a>
+                                                <a href="">Locksmith</a>
+                                                <a href="" class="start-word">Makeup Artist</a>
+                                                <a href="">Mechanics</a>
+                                                <a href="" class="start-word">Painting</a>
+                                                <a href="">Patios</a>
+                                                <a href="">Personal Training</a>
+                                                <a href="">Pest Control</a>
+                                                <a href="">Pet Grooming</a>
+                                                <a href="">Pet-Care</a>
+                                                <a href="">Photography</a>
+                                            </li>
+                                            <li>
+                                                <a href="">Plastering</a>
+                                                <a href="">Plumbing</a>
+                                                <a href="">Pool Cleaning</a>
+                                                <a href="">Pool Fencing</a>
+                                                <a href="" class="start-word">Removalists</a>
+                                                <a href="">Roofing</a>
+                                                <a href="">Rubbish Removal</a>
+                                                <a href="" class="start-word">Spray Tanning</a>
+                                                <a href="" class="start-word">Tiling</a>
+                                                <a href="">Tutoring</a>
+                                                <a href="" class="start-word">Van Removals</a>
+                                                <a href="" class="start-word">Web Design</a>
+                                                <a href="">Wordpress Devel</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </li>
+                    <li class="headerMenu"><a (click)="browseTask()">Browse Tasks</a></li>
+                    <li class="headerMenu"><a  routerLink= "/how-it-works">How it works</a></li>
+                    <li class="white-col headerMenu"  *ngIf="isLoggedIn">
+                        <a href="javascript:void(0)" class="navSidebar-button round-link" (click)="logout()">Logout</a>
+                    </li>
+                    <li class="white-col headerMenu" *ngIf="!isLoggedIn">
+                        <a class="navSidebar-button" style="cursor:pointer" (click)="loginDialog()" >Log in</a>
+                    </li>
+                    <li class="white-col headerMenu" *ngIf="!isLoggedIn">
+                        <a  class="navSidebar-button" style="cursor:pointer" (click)="signupDialog()">Sign up</a> 
+                    </li>
+                  
+                    <li class="white-col headerMenu">
+                        <a   class="navSidebar-button round-link">Become a Tasker</a>
+                    </li>
+                </ul>
+            </div>
+            <div
+            class="nav-overlay-panel"
+            (click)="toggle(false)"
+            [style.display]="isToggle ? 'block' : 'none'"
+            style="background-color: rgba(0, 0, 0, 0.7);display: block;"
+          ></div>
+        </nav>
+    </div>
+</header>

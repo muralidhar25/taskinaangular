@@ -1,0 +1,71 @@
+<ng-container *ngIf="dialogVisible">
+  <div id="Profile" class="modal-content modal-content-width dailogBox ">
+    <div class="upper-layer">
+      <div class="middle-layer">
+        <div class="modal-body modal-padd-2">
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            (click)="closeDialog()"
+          >
+            &times;
+          </button>
+          <span class="close-border">&nbsp;</span>
+
+          <div class="card-body-cstm">
+            <form class="wizard-container" id="js-wizard-form">
+              <div class="progress" id="js-progress">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  aria-valuenow="0"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  [style.width]="currentStep * 16.7 + '%'"
+                >
+                  <span class="progress-val">16.7%</span>
+                </div>
+              </div>
+
+              <div class="tab-content">
+                <ng-container [ngSwitch]="currentStep">
+                  <profile-add-step
+                    [step]="currentStep"
+                    *ngSwitchCase="stepType.Profile1"
+                    (onStepChanged)="onStepChanged($event)"
+                  ></profile-add-step>
+                  <profile-addskill-step
+                    [step]="currentStep"
+                    *ngSwitchCase="stepType.Profile2"
+                    (onStepChanged)="onStepChanged($event)"
+                  ></profile-addskill-step>
+                  <profile-mobile-step
+                    [step]="currentStep"
+                    *ngSwitchCase="stepType.Profile3"
+                    (onStepChanged)="onStepChanged($event)"
+                  ></profile-mobile-step>
+                  <profile-tellusmore-step
+                    [step]="currentStep"
+                    *ngSwitchCase="stepType.Profile4"
+                    (onStepChanged)="onStepChanged($event)"
+                  ></profile-tellusmore-step>
+                  <profile-gettingpaid-step
+                    [step]="currentStep"
+                    *ngSwitchCase="stepType.Profile5"
+                    (onStepChanged)="onStepChanged($event)"
+                  ></profile-gettingpaid-step>
+                  <profile-goodtogo-step
+                    [step]="currentStep"
+                    *ngSwitchCase="stepType.Profile6"
+                    (onStepChanged)="onStepChanged($event)"
+                  ></profile-goodtogo-step>
+                </ng-container>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

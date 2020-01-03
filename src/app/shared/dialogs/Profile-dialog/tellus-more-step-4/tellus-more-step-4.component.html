@@ -1,0 +1,58 @@
+<div class="tab-pane" id="tab4">
+  <h3 class="modal-title mb-40">Tell us more about you</h3>
+  <form
+    #f="ngForm"
+    (ngSubmit)="onSendData(f)"
+    class="scrollbar"
+    novalidate
+    autocomplete="off"
+  >
+    <div class="step-data overflow-modal">
+      <div class="data-group">
+        <p class="StepTitle">
+          Enter a short description to help describe what you’re experienced in
+          and what you’d be good at.
+        </p>
+
+        <textarea
+          placeholder="Enter a short description about yourself and what you want to do on Taskina"
+          rows="5"
+          cols="15"
+          class="AboutTextarea form-control"
+          #descriptionE="ngModel"
+          name="description"
+          [(ngModel)]="description"
+          required
+          [ngClass]="{ error: !valid }"
+          minlength="50"
+        ></textarea>
+        <div
+          *ngIf="
+            descriptionE.errors &&
+            (descriptionE.dirty || descriptionE.touched || f.submitted)
+          "
+          [ngClass]="'error'"
+        >
+          <div *ngIf="descriptionE.errors.required">
+            Description must be at least 50 characters long
+          </div>
+          <div *ngIf="descriptionE.errors.minlength">
+            Description must be at least 50 characters long
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step-footer">
+      <div class="dot-step">
+        <step-count [step]="step"></step-count>
+      </div>
+      <div class="btn-next-con">
+        <a class="btn-back" (click)="onPrevstep()">Back</a>
+
+        <a class="btn-skip" (click)="onSkipStep()">Skip</a>
+        <!-- <a class="btn-skip" (click) = 'onSkipStep()'>Skip</a> -->
+        <input type="submit" class="btn-next" value="Next" />
+      </div>
+    </div>
+  </form>
+</div>

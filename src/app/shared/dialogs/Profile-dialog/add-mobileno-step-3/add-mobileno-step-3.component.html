@@ -1,0 +1,101 @@
+<div class="tab-pane" id="tab3">
+  <h3 class="modal-title mb-40">Mobile Number</h3>
+  <form #f="ngForm" (ngSubmit)="onSendData(f)" class="scrollbar" novalidate autocomplete="off">
+    <div class="step-data overflow-modal">
+      <div class="data-group">
+        <p class="StepTitle">
+          Let’s have those digits! We’ll keep you up to date about the latest
+          happenings on your tasks by SMS.
+        </p>
+        <div class="MobileArea">
+          <h3 class="mobiletext">Mobile number</h3>
+          <span>We will send you verification code</span>
+          <input type="text" name="code" [(ngModel)]="contactNo" class="form-control input-field"  mask="(000) 000-0000"
+            [pattern]="phoneRegex" placeholder="(&#9679;&#9679;&#9679;) &#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; "/>
+          <button class="button-Secondary modal-send-btn">Send</button>
+
+          <p class="varifytext">
+            Verifying your mobile number helps us know you’re a genuiene human!
+            We won’t show it to anyone or sell it on to any 3rd party. It’s just
+            for us to send you some good stuff.
+          </p>
+
+          <!-- <div id="form"> -->
+          <!-- <input
+              type="text"
+              size="1"
+              min="0"
+              max="9"
+              id="1"
+              pattern="[0-9]{1}"
+              style="width:32px;"
+            /> -->
+
+          <!-- <button
+              class="btn btn-primary btn-embossed"
+              (click)="verifythismobileOTP()"
+            > -->
+          <!-- Verify
+            </button> -->
+          <!-- </div> -->
+
+          <!-- <div class="OTP">
+            <input
+              class="key"
+              [(ngModel)]="firstkey"
+              type="text"
+              maxlength="1"
+              minlength="1"
+              autocomplete="off"
+            />&nbsp;
+            <input
+              class="key"
+              [(ngModel)]="secondkey"
+              type="text"
+              maxlength="1"
+              minlength="1"
+              autocomplete="off"
+            />&nbsp;
+            <input
+              class="key"
+              [(ngModel)]="thirdkey"
+              type="text"
+              maxlength="1"
+              minlength="1"
+              autocomplete="off"
+            />&nbsp;
+            <input
+              class="key"
+              [(ngModel)]="fourthkey"
+              type="text"
+              maxlength="1"
+              minlength="1"
+              autocomplete="off"
+            />
+            &nbsp;
+            <input
+              class="key"
+              [(ngModel)]="fifthkey"
+              type="text"
+              maxlength="1"
+              minlength="1"
+              autocomplete="off"
+            />
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <div class="step-footer">
+      <div class="dot-step">
+        <step-count [step]="step"></step-count>
+      </div>
+      <div class="btn-next-con">
+        <a class="btn-back" (click)="onPrevstep()">Back</a>
+
+        <a class="btn-skip" id="mobile-css" (click)="onSkipStep()">Skip</a>
+
+        <input type="submit" class="btn-next" value="Next" />
+      </div>
+    </div>
+  </form>
+</div>

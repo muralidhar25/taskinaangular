@@ -1,0 +1,59 @@
+<ng-container *ngIf="dialogVisible">
+  <div class="modal-content modal-content-width dailogBox ">
+    <div class="upper-layer">
+      <div class="middle-layer">
+        <div class="modal-body modal-padd">
+          <button type="button" class="close" (click)="hideDialog()">
+            &times;
+          </button>
+          <span class="close-border">&nbsp;</span>
+          <h3 class="modal-title">{{ title }}</h3>
+
+          <form #f="ngForm" (ngSubmit)="onSend(f)" (keydown.enter)="$event.preventDefault()" novalidate>
+            <ng-container *ngIf="!submitted; else sent">
+              <div class="dialog-body group login-modal">
+                <p>
+                  Enter your email below and we will send you instructions on
+                  how to reset your password.
+                </p>
+                <input id="email" type="email" name="email" #focusable required email maxlength="256"
+                  [(ngModel)]="model.email" placeholder="Email" class="form-control input-email" />
+                <p *ngIf="error" style="color: red">{{error}}</p>
+                <br><br><br>
+              </div>
+              <div>
+                <input type="submit" class="button-Secondary" value="Send" />&nbsp;
+                <a class="button-primary" (click)="loginDialogLink()">Cancel</a>
+              </div>
+            </ng-container>
+          </form>
+        </div>
+        <ng-template #sent>
+          <img src="/assets/images/HF_Emoji.png" height="100px" width="100px" /><br /><br />
+          <p class="text-center">
+            An Email has been sent to the address you provided.
+          </p>
+          <a class="button-primary" (click)="loginDialogLink()">Go back to your login</a><br />
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<!-- <ng-container *ngIf="dialogVisible">
+    <p-dialog modal="true" modal="modal" width="auto" ngClass="custom-dialog" [resizable]="false" [closable]="false" [(visible)]="dialogVisible">
+        <p-header ngClsass="popup-header">
+            <h2>External Web Site</h2>
+            <span class="ij icon x-icon" (click)="hideDialog()"></span>
+        </p-header>
+        <article class="dialog-container">
+            <div class="dialog-body">
+                You are about to leave Industry Jump. Are you sure you want to continue? Please take a moment and review the URL below.<br><br>
+                <span class="externalurl">{{externalWebsite}}</span>
+            </div>
+        </article>
+        <p-footer>
+            <button type="button" pButton label="Yes" (click)="onAccept()"></button>
+            <button type="button" pButton label="No" (click)="hideDialog()"></button>
+        </p-footer>
+    </p-dialog>
+</ng-container> -->

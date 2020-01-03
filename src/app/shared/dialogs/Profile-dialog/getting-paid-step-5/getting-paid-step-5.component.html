@@ -1,0 +1,69 @@
+<div class="tab-pane" id="tab5">
+  <h3 class="modal-title mb-40">Getting you paid</h3>
+  <form
+    [formGroup]="gettingPaidForm"
+    (ngSubmit)="onSendData()"
+    class="scrollbar"
+    autocomplete="off"
+  >
+    <div class="step-data overflow-modal">
+      <div class="data-group">
+        <p class="StepTitle">
+          Please provide your bank details so you can get paid. We don’t take
+          any money from your account
+        </p>
+        <div class="data-group text-center">
+          <input
+            type="text"
+            formControlName="accountHolderName" 
+            class="form-control input-field"
+            placeholder="Account Holder Name"
+          />
+          <div *ngIf="submitted && f.accountHolderName.errors" class="error">
+              <div *ngIf="f.accountHolderName.errors.required">Account holder name is required</div>
+          </div>
+          
+          <input
+            type="text"
+            formControlName="routing_number" 
+            class="form-control input-field"
+            placeholder="BSB"
+          />
+
+          <div *ngIf="submitted && f.routing_number.errors" class="error">
+              <div *ngIf="f.routing_number.errors.required">BSB number is required</div>
+              <div *ngIf="f.routing_number.errors.serverError">{{f.routing_number.errors.serverError}}</div>
+          </div>          
+          
+          <input
+            type="text"
+            formControlName="account_number" 
+            class="form-control input-field"
+            placeholder="Account Number"
+          />
+
+          <div *ngIf="submitted && f.account_number.errors" class="error">
+              <div *ngIf="f.account_number.errors.required">Account number is required</div>
+              <div *ngIf="f.account_number.errors.serverError">{{f.account_number.errors.serverError}}</div>
+          </div>
+         
+          <button class="button-Secondary Add-btn">
+            Add Bank Account
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="step-footer">
+      <div class="dot-step">
+        <step-count [step]="step"></step-count>
+      </div>
+      <div class="btn-next-con">
+        <a class="btn-back" (click)="onPrevstep()">Back</a>
+
+        <a class="btn-skip" (click)="onSkipStep()">Skip</a>
+        <!-- <a class="btn-skip" (click) = 'onSkipStep()'>Skip</a> -->
+        <input type="submit" class="btn-next" value="Next" />
+      </div>
+    </div>
+  </form>
+</div>

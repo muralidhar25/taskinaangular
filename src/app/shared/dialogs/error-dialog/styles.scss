@@ -1,0 +1,32 @@
+@import "../../styles/variables.scss";
+@import "../../styles/modals.scss";
+
+@import "../../styles/mixins/buttons.scss";
+.dailogBox div.upper-layer div.middle-layer {
+  padding: 0px 0 50px 0px;
+}
+.button-Secondary {
+  color: #ffffff !important;
+  padding: 6px 50px;
+  position: relative;
+  border: 1px solid #7db343;
+  border-bottom: 4px solid #618c33;
+  border-radius: 30px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  background-color: #7db343;
+  transition: all 0.7s ease 0.02s;
+  font-size: 20px;
+  transition: all 0.35s ease;
+}
+.button-Secondary:hover,
+.button-Secondary:active,
+.button-Secondary:focus {
+  text-decoration: none;
+  background-color: #7db343;
+  border: 1px solid #7db343;
+  border-color: #7db343;
+  border-bottom: 4px solid #7db343;
+  box-shadow: none;
+  padding: 6px 60px;
+  transition: all 0.35s ease;
+}

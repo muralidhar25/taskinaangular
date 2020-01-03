@@ -1,0 +1,33 @@
+<div class="tab-pane active" id="tab1">
+  <h3 class="modal-title mb-40">Setup your profile image</h3>
+  <form #f="ngForm" (ngSubmit)="onSendData(f)" class="scrollbar" novalidate autocomplete="off">
+    <div class="step-data overflow-modal">
+      <div class="profile-user">
+        <div>
+          <img [src]="imgURL" [ngClass]="userProfileImgClass" />
+        </div>
+      </div>
+      <div class="profile-name">
+        <input id="filePicker" #file type="file" accept="image" (change)="onFileSelected($event)" />
+        <a (click)="file.click()"><span><i class="fa fa-edit"></i></span>&nbsp;&nbsp;Add image</a>
+      </div>
+      <div class="profile-info">
+        Upload a clear photo of yourself to help people identify you from other
+        members, and also gain trust.
+      </div>
+      <div class="error" *ngIf="error"><br>
+        Please upload a photo of you
+      </div>
+    </div>
+    <div class="step-footer">
+      <div class="dot-step">
+        <step-count [step]="step"></step-count>
+      </div>
+      <div class="btn-next-con">
+        <a class="btn-skip" id="upload-skip" (click)="onSkipStep()">Skip</a>
+        <!-- <a class="btn-skip" (click) = 'onSkipStep()'>Skip</a> -->
+        <input type="submit" class="btn-next " value="Next" />
+      </div>
+    </div>
+  </form>
+</div>

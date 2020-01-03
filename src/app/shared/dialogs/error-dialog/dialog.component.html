@@ -1,0 +1,24 @@
+<ng-container *ngIf="dialogVisible">
+  <div id="LeaveMsg" class="modal-content modal-content-width dailogBox confirmationDialogBox">
+    <div class="upper-layer">
+      <div class="middle-layer">
+        <div class="modal-body modal-padd">
+          <button type="button" class="close" data-dismiss="modal" (click)="dialogVisible = false">
+            &times;
+          </button>
+          <span class="close-border">&nbsp;</span>
+          <h3 class="modal-title">Error!</h3>
+          <br />
+          <form>
+            <div class="group">
+              <p class="login-txt">{{ message }}</p>
+              <div class="action-btn">
+                <a class="button-primary" (click)="dialogVisible = false">Ok</a>&nbsp;&nbsp;
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

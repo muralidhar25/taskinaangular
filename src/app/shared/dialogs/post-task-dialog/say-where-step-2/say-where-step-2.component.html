@@ -1,0 +1,132 @@
+<div class="tab-pane" id="tab2" #tab2>
+  <h3 class="modal-title mb-40">Say where & when</h3>
+  <form #f="ngForm" (ngSubmit)="onSendData(f.form)" class="scrollbar" novalidate autocomplete>
+    <div class="step-data">
+      <div class="data-group">
+        <p>Where do you need it done?</p>
+        <div class="radio-select where-when">
+          <label class="radio">In Person
+            <input type="radio" checked="checked" name="is_looking" (change)="radioToggle($event)" [value]="0"
+              [(ngModel)]="tasks.taskIdType" />
+            <span class="checkround" [ngClass]="{'active': tasks.taskIdType=='0'}"></span>
+            <span class="radio-text">Select this if you need the Tasker physically there</span>
+          </label>
+          <label class="radio">Remotely
+            <input type="radio" name="is_looking" (change)="radioToggle($event)" [value]="1"
+              [(ngModel)]="tasks.taskIdType" />
+            <span class="checkround"></span>
+            <span class="radio-text">Select this if the Tasker can do it from home<br><br></span>
+          </label>
+        </div>
+        <div *ngIf="tasks.taskIdType == '0'">
+          <input type="text" class="form-control input-field" (keyup)="searchZipCode($event.target.value)"
+            list="zipCodes" #taskLocation="ngModel" [(ngModel)]="tasks.taskLocation" name="taskLocation"
+            placeholder="Location"/>
+
+          <datalist id="zipCodes">
+            <option *ngFor="let code of zipCodesArr" [value]="code">{{
+              code
+            }}</option>
+          </datalist>
+
+          <p *ngIf="
+              tasks.taskLocation &&
+              tasks.taskLocation.length > 2 &&
+              !zipCodesArr.includes(tasks.taskLocation)
+            " class="error">
+            Select from the list.
+          </p>
+        </div>
+
+        <p>When do you need it done?</p>
+        <div class="date-picker">
+          <div class="date-border">
+            <div class="cal-date">
+              <img src="assets/images/calendar.png" (click)="task.click()" />
+            </div>
+            <div class="date-text">
+              <input type="text" class="form-control RoundBorder" [minDate]="minDate" [(ngModel)]="tasks.taskDate"
+                name="taskDate" #taskDate="ngModel" #dp="bsDatepicker" placeholder="mm/dd/yyyy" bsDatepicker #task
+                [(bsValue)]="myDateValue" autocomplete="off" />
+            </div>
+            <img src="assets/images/angle-arrow-down.png" class="angle-arrow-down-link" (click)="task.click()" />
+          </div>
+        </div>
+
+        <div class="check-box padd-15" *ngIf="tasks.taskIdType == '0'">
+          <label class="check ">I need a certain time of day
+            <input type="checkbox" #timeofday [(ngModel)]="certainTime" name="timeofday" (change)="partOfDay($event)" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+
+        <div class="tasker-time" *ngIf="tasks.taskIdType == '0' && certainTime == true">
+          <p>What time(s) do you need the Tasker?</p>
+          <div class="time-check">
+            <label class="check ">
+              <input type="checkbox" name="morning" [value]="1" (ngModel)="(partOfDay)" (change)="partOfDay($event)" />
+              <span class="checkmark"></span>
+            </label>
+            <div class="day-detail">
+              <img src="assets/images/icon-m.png" />
+              <span class="day-title">Morning</span>
+              <span class="time-title">Before 10am</span>
+            </div>
+          </div>
+
+          <div class="time-check">
+            <label class="check ">
+              <input type="checkbox" name="midday" [value]="2" (ngModel)="(partOfDay)" (change)="partOfDay($event)" />
+              <span class="checkmark"></span>
+            </label>
+            <div class="day-detail">
+              <img src="assets/images/icon-m.png" />
+              <span class="day-title">Midday</span>
+              <span class="time-title">10am - 2pm</span>
+            </div>
+          </div>
+
+          <div class="time-check">
+            <label class="check ">
+              <input type="checkbox" name="afternoon" [value]="3" (ngModel)="(partOfDay)"
+                (change)="partOfDay($event)" />
+              <span class="checkmark"></span>
+            </label>
+            <div class="day-detail">
+              <img src="assets/images/icon-m.png" />
+              <span class="day-title">Afternoon</span>
+              <span class="time-title">2pm - 6pm</span>
+            </div>
+          </div>
+
+          <div class="time-check">
+            <label class="check ">
+              <input type="checkbox" name="evening" [value]="4" (ngModel)="(partOfDay)" (change)="partOfDay($event)" />
+              <span class="checkmark"></span>
+            </label>
+            <div class="day-detail">
+              <img src="assets/images/icon-md.png" />
+              <span class="day-title">Evening</span>
+              <span class="time-title">After 6pm</span>
+            </div>
+          </div>
+          <p class="tasker-note">
+            It's ok, you can sort out exact times with your Tasker later
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="step-footer">
+      <div class="dot-step">
+        <step-count [step]="step"></step-count>
+      </div>
+      <div class="btn-next-con">
+        <button type="button" class="btn-back" (click)="onPrevstep()">
+          Back
+        </button>
+        <!-- <a class="btn-skip" (click) = 'onSkipStep()'>Skip</a> -->
+        <input type="submit" class="btn-next" value="Next" />
+      </div>
+    </div>
+  </form>
+</div>

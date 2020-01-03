@@ -1,0 +1,24 @@
+<div class="tab-pane" id="tab6">
+  <h3 class="modal-title mb-40">You're good to go</h3>
+  <form
+    #f="ngForm"
+    (ngSubmit)="onSendData(f)"
+    class="scrollbar"
+    novalidate
+    autocomplete="off">
+    <div class="step-data overflow-modal padd-0">
+      <img [src]="imgscreen" class = "good-to-go" />
+    </div>
+    <div class="step-footer">
+      <div class="dot-step">
+        <step-count [step]="step"> </step-count>
+      </div>
+      <div class="btn-next-con">
+        <a class="btn-back" (click)="onPrevstep()">Back</a>
+
+        <!-- <a class="btn-skip" (click) = 'onSkipStep()'>Skip</a> -->
+        <input type="submit" (click)="hideDialog()" [routerLink]="['/browse-tasks']" class="btn-next btn-last" value="Browse task" />
+      </div>
+    </div>
+  </form>
+</div>

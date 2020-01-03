@@ -1,0 +1,280 @@
+<div class="header-filter-wrapper">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-10 col-sm-10 col-12 filter-dropdown">
+            <div class="locaion-filter">
+               <div class="cstm-select location-filter-sec">
+                  <label class="location-filter" (click) = "showFilter('location')">Location</label>
+                  <div class="job-post-div hover-filter" *ngIf="location">
+                     <i class="d-tasker-arrow"></i>
+                     <div class="checkbox-loc">
+                        <div class="check-box padd-15 additional-filter">
+                           <label class="check ">Remote
+                              <input type="checkbox" checked name="remote" [(ngModel)]="remote">
+                              <span class="checkmark"></span>
+                           </label>
+                        </div>
+                     </div>
+                     <div class="checkbox-loc">
+                        <div class="check-box padd-15 additional-filter">
+                           <label class="check ">In person
+                              <input type="checkbox" checked name="inperson" [(ngModel)]="inperson">
+                              <span class="checkmark"></span>
+                           </label>
+                           <div class="person-checkbox" *ngIf="inperson">
+                              <span>Where do you want to work?</span>
+                              <div class="city-filter-dd">
+                                 <p-autoComplete [suggestions]="searchedlist" 
+                                    (completeMethod)="searchSuburb($event)" field="full_name" dataKey="id"
+                                    [(ngModel)]="suburb" inputStyleClass="form-control" styleClass="single-autocomplete"
+                                    placeholder = "Type or select city" >
+                                 </p-autoComplete>                                 
+                              </div>
+                           </div>
+                           <div class="person-checkbox" *ngIf="!inperson">
+                              <span>Where do you want to work?</span>
+                              <div class="city-filter-dd">
+                                 <input value="" placeholder="Type or select city" disabled>                                 
+                              </div>
+                           </div>
+                           <div class="person-travel" *ngIf="inperson">
+                              <span class="travel-title">Can you travel? Select a distance.</span>
+                              <div class="location-slider">
+                                 <div style = "text-align: center;">{{distanceRangeValues}} Miles<span *ngIf="distanceRangeValues==100">+</span></div>
+                                 <p-slider [(ngModel)]="distanceRangeValues" [min]="5" [max]="100"  [step]="1"></p-slider>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="Filter-data">
+                        <div class="input-group filter-button">
+                           <a href="javascript:void(0);" (click) = "filterTasks()" class="button-Secondary modal-login-btn">Apply</a>
+                           <a href="javascript:void(0);" class="button-Secondary modal-login-btn cancle-btn" (click) = "hideFilters()"> Cancel</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="cstm-select price-filter-sec">
+                  <label class="price-filter"  (click) = "showFilter('price')">Price</label>
+                  <div class="any-price-div hover-filter" *ngIf="price">
+                     <i class="d-tasker-arrow"></i>
+                     <span class="filter-title">Select a price range</span>
+                     <div class="Filter-data">
+                        <div class="input-group">
+                           <div class="range-slider-filter">
+                              <div style = "text-align: center;">${{priceRangeValues[0]}} - ${{priceRangeValues[1]}}</div>
+                              <p-slider [(ngModel)]="priceRangeValues" [min]="5" [max]="9999"  [step]="5"
+                              [range]="true"></p-slider>
+                           </div>
+                        </div>
+                        <div class="input-group filter-button">
+                           <a href="javascript:void(0);" (click) = "filterTasks()" class="button-Secondary modal-login-btn">Apply</a>
+                           <a href="javascript:void(0);" class="button-Secondary modal-login-btn cancle-btn" (click) = "hideFilters()">Cancel</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="cstm-select size-230">
+                  <div class="select-category-input">
+                     <input type="text" class="select-filter" placeholder="Type or select category"  (click) = "showFilter('category')">  
+                     <div class="select-filter-div hover-filter" *ngIf="category">
+                        <div class="check-list-filter">
+                           <div class="checkbox-loc">
+                              <div class="check-box padd-15 additional-filter">
+                                 <label class="check ">Accounting
+                                    <input type="checkbox" checked="checked" name="Accounting">
+                                    <span class="checkmark"></span>
+                                 </label>
+                              </div>
+                           </div>
+                           <div class="checkbox-loc">
+                              <div class="check-box padd-15 additional-filter">
+                                 <label class="check ">Admin
+                                    <input type="checkbox" name="Admin">
+                                    <span class="checkmark"></span>
+                                 </label>
+                              </div>
+                           </div>
+
+                           <div class="checkbox-loc">
+                              <div class="check-box padd-15 additional-filter">
+                                 <label class="check ">Bathroom Renovations
+                                    <input type="checkbox" name="Bathroom">
+                                    <span class="checkmark"></span>
+                                 </label>
+                              </div>
+                           </div>
+
+                           <div class="checkbox-loc">
+                              <div class="check-box padd-15 additional-filter">
+                                 <label class="check ">Babysitting
+                                    <input type="checkbox" name="Babysitting">
+                                    <span class="checkmark"></span>
+                                 </label>
+                              </div>
+                           </div>
+
+                           <div class="checkbox-loc">
+                              <div class="check-box padd-15 additional-filter">
+                                 <label class="check ">Catering
+                                    <input type="checkbox" name="Catering">
+                                    <span class="checkmark"></span>
+                                 </label>
+                              </div>
+                           </div>
+
+                           <div class="checkbox-loc">
+                              <div class="check-box padd-15 additional-filter">
+                                 <label class="check ">End of Lease Cleaning
+                                    <input type="checkbox" name="Lease-Cleaning">
+                                    <span class="checkmark"></span>
+                                 </label>
+                              </div>
+                           </div>
+                           <div class="checkbox-loc">
+                              <div class="check-box padd-15 additional-filter">
+                                 <label class="check ">Pool Cleaning
+                                    <input type="checkbox" name="Pool Cleaning">
+                                    <span class="checkmark"></span>
+                                 </label>
+                              </div>
+                           </div>
+
+                           <div class="checkbox-loc">
+                              <div class="check-box padd-15 additional-filter">
+                                 <label class="check ">Admin
+                                    <input type="checkbox" name="Admin">
+                                    <span class="checkmark"></span>
+                                 </label>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="input-group filter-button">
+                           <a href="javascript:void(0);" (click) = "filterTasks()" class="button-Secondary modal-login-btn">Apply</a>
+                           <a href="javascript:void(0);" class="button-Secondary modal-login-btn cancle-btn" (click) = "hideFilters()">Cancel</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="check-box padd-15 additional-filter">
+                  <label class="check ">Hide assigned tasks
+                     <input [(ngModel)]="assigned" type="checkbox" checked="checked" name="timeofday" (change) = "filterTasks()" >
+                     <span class="checkmark"></span>
+                  </label>
+               </div>
+               <div class="check-box padd-15 additional-filter">
+                  <a href="javascript:void(0);" (click) = "clearAllFilters()" *ngIf="filterApplied">Clear filters</a>
+               </div>
+            </div>
+         </div>
+         <div class="col-lg-2 col-sm-2 col-12 map-filter">
+            <div class="show-map">
+               <label class="show-map-lbl">Show Map</label>
+               <label>
+                  <input type="checkbox" class="map-switch" />
+                  <div>
+                     <div></div>
+                  </div>
+               </label>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- <div class="header-filter">
+    <div class="job-post">
+       Job Type <i class="fa fa-caret-down"></i>
+       <div class="job-post-div hover-filter">
+          <i class="d-tasker-arrow"></i>
+          <span class="filter-title">To Be Done</span> 
+          <div class="Filter-data">
+             <div class="filter-data-slider map-filter">
+                <div class="show-map">
+                   <div class="data-group">
+                      <label class="radio">In Person
+                      <input type="radio" name="is_looking" value = "0" [(ngModel)]="type">
+                      <span class="checkround"></span>
+                      </label>
+                   </div>
+                   <div class="data-group">
+                      <label class="radio">Remotely
+                      <input type="radio" name="is_looking" value = "1" [(ngModel)]="type">
+                      <span class="checkround"></span>
+                      </label>
+                   </div>
+                   <div class="data-group">
+                      <label class="radio">All
+                      <input type="radio" name="is_looking" value = "" [(ngModel)]="type">
+                      <span class="checkround"></span>
+                      </label>
+                   </div>
+                   <div class="data-group">
+                     <div class="Suburb-lbl">Suburb</div>
+                     <a href="javascript:void(0);" class="Suburb-search-icon">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                     </a>
+                     <div class="input-group">
+                        <p-autoComplete [suggestions]="searchedlist" 
+                           (completeMethod)="searchSuburb($event)" field="full_name" dataKey="id"
+                           [(ngModel)]="suburb" inputStyleClass="form-control" styleClass="single-autocomplete">
+                        </p-autoComplete>
+                     </div>
+                      
+                   </div>
+                </div>
+             </div>
+             <div class="input-group">
+                <label class="jt-input">Distance</label>
+                <div class="range-slider-filter" style = "width: 100%;">
+                     <div style = "text-align: center;">{{distanceRangeValues}} KM</div>
+                     <p-slider [(ngModel)]="distanceRangeValues"></p-slider>
+                </div>
+             </div>
+             <div class="input-group filter-button">
+                <a href="javascript:void(0);" class="button-Secondary modal-login-btn cancle-btn">Cancel</a>
+                <a href="javascript:void(0);" (click) = "filterTasks()" class="button-Secondary modal-login-btn">Apply</a>
+             </div>
+          </div>
+       </div>
+    </div>
+    <div class="any-price">
+       Any Price <i class="fa fa-caret-down"></i>
+       <div class="any-price-div hover-filter">
+          <i class="d-tasker-arrow"></i>
+          <span class="filter-title">Set Task Price Range</span> 
+          <div class="Filter-data">
+             <div class="input-group">
+                  <div class="range-slider-filter" style = "width: 100%;">
+                     <div style = "text-align: center;">${{priceRangeValues[0]}} - ${{priceRangeValues[1]}}</div>
+                     <p-slider [(ngModel)]="priceRangeValues" [min]="5" [max]="9999"  [step]="10"
+                     [range]="true"></p-slider>
+                  </div>
+             </div>
+             <div class="input-group filter-button">
+                <a href="javascript:void(0);" class="button-Secondary modal-login-btn cancle-btn">Cancel</a>
+                <a href="javascript:void(0);" (click) = "filterTasks()" class="button-Secondary modal-login-btn">Apply</a>
+             </div>
+          </div>
+       </div>
+    </div>
+    <div class="task-type">
+       Task Type <i class="fa fa-caret-down"></i>
+       <div class="task-type-div hover-filter">
+          <i class="d-tasker-arrow"></i>
+          <span class="filter-title">Available Tasks Only</span> 
+          <div class="Filter-data">
+            <label class="radio">Hide task that are already assigned
+            </label>
+            <div class="input-group">
+                  <p-inputSwitch [(ngModel)]="assigned"></p-inputSwitch>
+            </div>
+                
+             <div class="input-group filter-button">
+                <a href="javascript:void(0);" class="button-Secondary modal-login-btn cancle-btn">Cancel</a>
+                <a href="javascript:void(0);" (click) = "filterTasks()" class="button-Secondary modal-login-btn">Apply</a>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div> -->

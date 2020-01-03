@@ -1,0 +1,6 @@
+{
+    "siteApiUrl": "http://qa-api.taskina.com",
+    "siteUrl": "http://localhost:4200",
+    "intercomKey": "w4jiuyoa",
+    "production": false
+}

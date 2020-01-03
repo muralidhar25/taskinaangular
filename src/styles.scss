@@ -1,0 +1,154 @@
+
+/********************************************************
+Variable SCSS for variable declaration
+/********************************************************/
+@import "assets/scss/variable";
+
+/********************************************************
+Header SCSS for Header section 
+/********************************************************/
+@import "assets/scss/header";
+
+/********************************************************
+Section SCSS for middle section 
+/********************************************************/
+@import "assets/scss/section";
+
+/********************************************************
+Components SCSS for components Field 
+/********************************************************/
+@import "assets/scss/components";
+
+/********************************************************
+Footer SCSS for footer section 
+/********************************************************/
+@import "assets/scss/footer";
+
+/********************************************************
+Mixin SCSS for mixin 
+/********************************************************/
+@import "assets/scss/mixin";
+
+/********************************************************
+Media SCSS for responsive device 
+/********************************************************/
+@import "assets/scss/media";
+
+
+/********************************************************
+Dashboard SCSS 
+/********************************************************/
+@import "assets/scss/profile";
+
+/********************************************************
+Dashboard SCSS 
+/********************************************************/
+@import "assets/scss/profile-home";
+
+/********************************************************
+Dashboard SCSS 
+/********************************************************/
+@import "assets/scss/profile-account";
+
+
+/********************************************************
+Header Filter SCSS 
+/********************************************************/
+@import "assets/scss/header-filter.scss";
+
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+    border: 1px solid red !important;
+}
+
+input.ng-invalid.error,
+textarea.ng-invalid.error {
+    border: 1px solid red !important;
+}
+
+.error {
+    font-size: 14px;
+    padding: 0px 15px 1px;
+    color: red !important;
+    font-weight: 200 !important;
+}
+
+
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+    border: 1px solid red !important;
+}
+
+input.ng-invalid.error,
+textarea.ng-invalid.error {
+    border: 1px solid red !important;
+}
+
+.error {
+    color: red;
+    font-weight: 200;
+    font-size: 14px;
+    padding: 0px 15px 1px;
+}
+
+.ui-autocomplete {
+    width: 80% !important;
+}
+
+.ui-autocomplete-multiple-container {
+    width: 100% !important;
+    border-radius: 15px !important;
+    border: 1px solid #cad0d6 !important;
+    padding: 10px !important;
+}
+
+.ui-autocomplete-list-item {
+    width: 100% !important;
+}
+
+.ui-autocomplete-token {
+    margin-bottom: 5px !important;
+    width: auto !important;
+}
+
+body .ui-rating a {
+    color: #F0BF03 !important;
+    cursor: default !important;
+}
+
+body .ui-autocomplete-panel .ui-autocomplete-items .ui-autocomplete-list-item.ui-state-highlight {
+    color: black !important;
+    background-color: #e7e9ed !important;
+}
+
+.after-sign-up {
+  .single-autocomplete {
+    width: 100% !important;
+  }
+
+
+  .form-control {
+    max-width: 375px;
+    border: 1px solid #cad0d6;
+    border-radius: 30px;
+    margin-bottom: 5px;
+    padding-left: 15px !important;
+    height: 50px;
+    text-align: left;
+    display: inline-block;
+  }
+
+  .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+  }
+
+  .ui-autocomplete-loader {
+    right: 1.45em;
+  }
+}

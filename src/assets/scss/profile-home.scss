@@ -1,0 +1,714 @@
+/********************************************************
+0. Chaining Extends | Import Variables & Mixins   
+/********************************************************/
+
+@import "variable";
+@import "mixin";
+
+
+/********************************************************
+10. Profile Home 
+/********************************************************/
+
+/********************************************************
+10-A. left Section
+/********************************************************/
+.dashboard-profile-wrapper {
+    .profile-member-wrapper {
+        float: left;
+        max-width: 38%;
+        padding-right: 0;
+        padding-left: 0;
+
+        .profile-details {
+            width: 100%;
+            max-width: 280px;
+            margin-bottom: 15px;
+            display: block;
+            background: #fff;
+
+            .member-profile-area {
+                padding: 20px 10px 30px 15px;
+                display: inline-block;
+                border-bottom: 2px solid #DEF4FA;
+                width: 100%;
+
+                .profile-member-pic {
+                    float: left;
+                    padding-right: 12px;
+
+                    .box-profile-image {
+                        img {
+                            height: 47px;
+                        }
+                    }
+                }
+
+                .profile-member-name {
+                    float: left;
+
+                    .name {
+                        color: #4C002E;
+                        font-family: $font-family-Comfortaa;
+                        font-size: 18px;
+                        font-weight: bold;
+                        line-height: 24px;
+                        display: block;
+                    }
+
+                    .rating {
+                        display: block;
+
+                        i {
+                            color: #ECB534;
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                border: 3px solid #DEF4FA;
+
+                &:before {
+                    display: none;
+                }
+            }
+
+            .profile-status-wrapper {
+                padding: 30px 12px 0px 20px;
+
+                .loading {
+                    span {
+                        display: block;
+                        background-color: #F9F9F9;
+                        border-radius: 2px;
+                        margin: 5px 0 0;
+                        width: 235px;
+                        height: 14px;
+                    }
+
+                    .profile-status-txt {
+                        width: 100%;
+                        background-color: #fff;
+                        height: auto;
+                        font-family: $font-family-default;
+                        font-size: 16px;
+                        color: #000;
+                        display: block;
+                    }
+                }
+
+                .status-details {
+                    display: inline-block;
+                    padding: 34px 0 20px;
+
+                    ul {
+                        padding: 0;
+                        margin: 0;
+
+                        li {
+                            float: left;
+                            list-style-type: none;
+                            height: 40px;
+                            width: 40px;
+                            background-color: #D8D8D8;
+                            border-radius: 25px;
+                            margin-right: 20px;
+                            margin-bottom: 10px;
+                            position: relative;
+
+                            &:last-child {
+                                margin-right: 0;
+                            }
+
+                            span {
+                                color: #9B9B9B;
+                                font-family: $font-family-default;
+                                font-size: 14px;
+                                line-height: 19px;
+                                position: absolute;
+                                bottom: -22px;
+                                left: -6px;
+                                width: 55px;
+                                text-align: center;
+                                display: block;
+                            }
+
+                            &:before {
+                                font-family: FontAwesome;
+                                content: "\f00c";
+                                font-size: 22px;
+                                position: relative;
+                                top: 4px;
+                                left: 10px;
+                                color: #fff;
+                            }
+                        }
+
+                        .active {
+                            background-color: #2EB67D;
+                        }
+                    }
+
+                    .profile-percent {
+                        display: inline-block;
+                        width: 100%;
+                        padding: 30px 0 0;
+                        text-align: center;
+
+                        span {
+                            color: #E0245A;
+                            font-family: $font-family-default;
+                            font-size: 16px;
+                            line-height: 22px;
+                            padding-bottom: 10px;
+                            display: inline-block;
+                            width: 100%;
+                        }
+
+                        a {
+                            font-family: $font-family-default;
+                            font-size: 16px;
+                            line-height: 22px;
+                            font-weight: bold;
+                            color: #34C5F0;
+                        }
+                    }
+                }
+            }
+        }
+
+        .announcement-wrapper {
+            .member-profile-area {
+                .profile-member-pic {
+                    padding-right: 15px;
+
+                    .box-profile-image {
+                        i {
+                            color: #56CBEE;
+                            font-size: 32px;
+                            margin-top: 8px;
+                        }
+                    }
+                }
+
+                .profile-member-name {
+                    .short-txt {
+                        color: #4C002E;
+                        font-family: $font-family-default;
+                        font-size: 14px;
+                        line-height: 19px;
+                    }
+                }
+            }
+
+            .announcement-details-wrap {
+                display: inline-block;
+                padding: 15px 0;
+
+                .announcement-details {
+                    padding: 3px 20px 3px 20px;
+                    display: inline-block;
+                    width: 100%;
+
+                    .profile-member-pic {
+                        float: left;
+                        padding-right: 20px;
+
+                        .box-profile-image {
+                            display: inline-block;
+                            padding-top: 5px;
+
+                            i {
+                                color: #D8D8D8;
+                                font-size: 24px;
+                            }
+                        }
+                    }
+
+                    .profile-member-name {
+                        float: left;
+
+                        span {
+                            width: 180px;
+                            height: 14px;
+                            background-color: #F9F9F9;
+                            display: block;
+                            margin-bottom: 5px;
+                        }
+
+                        .name,
+                        .short-txt {
+                            font-size: 16px;
+                            display: block;
+                            color: #000;
+                            background-color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+
+        .notification-wrapper {
+            .member-profile-area {
+                .profile-member-pic {
+                    .box-profile-image {
+                        img {
+                            height: 32px;
+                            margin-top: 8px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/********************************************************
+10-B. Right Section
+/********************************************************/
+
+.dashboard-profile-wrapper {
+    .profile-detail-wrapper {
+        margin-left: 25px;
+        width: 70.5%;
+        cursor: default;
+        padding-bottom: 20px;
+
+        .task-result {
+            margin-bottom: 20px;
+
+            .task-acc {
+                .nav-tabs {
+                    border-bottom: none;
+                    justify-content: flex-end;
+                    position: relative;
+
+                    .tabs-title {
+                        color: #4C002E;
+                        font-family: $font-family-Comfortaa;
+                        font-size: 20px;
+                        font-weight: bold;
+                        line-height: 28px;
+                        position: absolute;
+                        left: 0px;
+                        top: 10px;
+                    }
+
+                    .nav-item {
+                        margin-bottom: -3px;
+                        margin-left: 5px;
+                        position: relative;
+
+                        .nav-link {
+                            border-right: 3px solid #E0E6E8;
+                            border-top: 3px solid #f0f0f0;
+                            border-left: 3px solid #f0f0f0;
+                            border-bottom: 3px solid #DEF4FA;
+                            border-top-right-radius: 20px !important;
+                            border-top-left-radius: 20px !important;
+                            padding: 5px 50px 5px 15px;
+                            background: #f0f0f0;
+                            position: relative;
+
+                            span {
+                                display: block;
+                            }
+
+                            .title,
+                            .desc {
+                                color: #000;
+                                font-family: $font-family-default;
+                                font-size: 16px;
+                                line-height: normal;
+                                font-weight: 500;
+                            }
+
+                            .desc {
+                                font-size: 15px;
+                                font-weight: 300;
+                            }
+
+                            &:before {
+                                content: "";
+                                background-color: #DADADA;
+                                height: 26px;
+                                width: 26px;
+                                position: absolute;
+                                right: 15px;
+                                top: 10px;
+                                border-radius: 25px;
+                                z-index: 1;
+                            }
+
+                            &:after {
+                                background-image: url(assets/images/leaf-white.png);
+                                content: "";
+                                height: 24px;
+                                width: 24px;
+                                position: absolute;
+                                right: 16px;
+                                top: 13px;
+                                z-index: 2;
+                                background-size: 100%;
+                            }
+                        }
+
+                        .active {
+                            background: #fff;
+                            border-top: 3px solid #DEF4FA;
+                            border-right: 3px solid #DEF4FA;
+                            border-left: 3px solid #DEF4FA;
+                            border-bottom: 3px solid #FFF;
+
+                            .title,
+                            .desc {
+                                color: #4C002E;
+                            }
+
+                            &:before {
+                                background-color: #E0245A;
+                            }
+                        }
+                    }
+                }
+
+                .tab-content {
+                    border: 3px solid #DEF4FA;
+                    border-radius: 20px 0 20px 20px;
+                    padding: 25px 20px 40px 20px;
+                    background: #fff;
+
+                    .fade {
+                        opacity: 1;
+                    }
+
+                    .tab-pane {
+                        .task-tab-list {
+                            float: left;
+                            width: 25%;
+                            padding:0 8px;
+                            display: inline-block;
+                            text-align: center;
+                            min-height: 170px;
+                            height: 0;
+
+                            a {
+                                display: inline-block;
+                                text-align: center;
+                                height: 58px;
+                                width: 58px;
+                                background: #D8D8D8;
+                                border-radius: 50%;
+                                margin-bottom: 20px;
+                                position: relative;
+
+                                &:before {
+                                    font-family: FontAwesome;
+                                    content: "\f00c";
+                                    font-size: 36px;
+                                    position: relative;
+                                    top: 2px;
+                                    left: 0px;
+                                    color: #fff;
+                                }
+
+                                i {
+                                    color: #fff;
+                                    font-size: 22px;
+                                    position: absolute;
+                                    right: -2px;
+                                    bottom: -4px;
+                                    border: 1px solid #d8d8d8;
+                                    border-radius: 50%;
+                                    background: #d8d8d8;
+                                }
+                            }
+
+                            span {
+                                width: 100%;
+                                max-width: 145px;
+                                background: #f9f9f9;
+                                height: 14px;
+                                display: inline-block;
+                            }
+
+                            .task-tab-detail {
+                                background: #fff;
+                                height: auto;
+                                font-size: 16px;
+                                color: #000;
+                                line-height: normal;
+                            }
+                        }
+
+                        .btn-wrapper {
+                            display: inline-block;
+                            width: 100%;
+                            position: relative;
+                            top: -10px;
+                            text-align: center;
+
+                            .button-Secondary {
+                                font-size: 16px;
+                                padding: 6px 40px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .task-summary {
+            .task-acc {
+                .nav-tabs {
+                    .nav-item {
+                        .active {
+                            &:before {
+                                background-color: #3DC6EF;
+                            }
+                        }
+                    }
+                }
+
+                .tab-content {
+                    padding: 50px 30px;
+
+                    .tab-pane {
+                        .task-tab-list {
+                            a {
+                                width: 100%;
+                                max-width: 155px;
+                                height: 125px;
+                                border-radius: 0;
+                                background-color: #f9f9f9;
+                                margin-bottom: 7px;
+
+                                &:before {
+                                    display: none;
+                                }
+                            }
+                        }
+
+                        .btn-wrapper {
+                            top: 0;
+                            margin-top: 50px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/********************************************************
+Media Queries
+/********************************************************/
+
+@media (max-width:1024px) {
+    .dashboard-profile-wrapper {
+        .profile-member-wrapper {
+            max-width: 37%;
+
+            .profile-details {
+                max-width: 265px;
+            }
+
+            .announcement-wrapper {
+                .announcement-details-wrap {
+                    .announcement-details {
+                        padding: 3px 10px;
+                    }
+                }
+            }
+        }
+
+        .profile-detail-wrapper {
+            margin-left: 18px;
+
+            .task-result {
+                .task-acc {
+                    .nav-tabs {
+                        .tabs-title {
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:991px) {
+    .dashboard-profile-wrapper {
+        .profile-member-wrapper {
+            display: inline-block;
+            max-width: 100%;
+
+            .profile-details {
+                max-width: 265px;
+                display: inline-block;
+                width: 32.5%;
+                margin-left: 3px;
+
+                .member-profile-area {
+                    padding: 10px;
+                }
+
+                .profile-status-wrapper {
+                    padding: 25px 5px 0 10px;
+
+                    .loading {
+                        span {
+                            width: 100%;
+                        }
+                    }
+
+                    .status-details {
+                        ul {
+                            li {
+                                border-radius: 50%;
+                                height: 37px;
+                                width: 37px;
+
+                                &:before {
+                                    font-size: 18px;
+                                    top: 6px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .announcement-wrapper {
+                .announcement-details-wrap {
+                    .announcement-details {
+                        padding: 3px 5px;
+
+                        .profile-member-pic {
+                            padding-right: 10px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .profile-detail-wrapper {
+            margin-left: 0;
+            width: 100%;
+            margin-top: 40px;
+        }
+    }
+}
+
+@media (max-width:767px) {
+    .dashboard-profile-wrapper {
+        .profile-member-wrapper {
+            .profile-details {
+                max-width: 100%;
+                width: 100%;
+
+                .profile-status-wrapper {
+                    padding: 20px 20px 0;
+
+                    .loading {
+                        display: inline-block;
+                        text-align: center;
+                        width: 100%;
+
+                        .profile-status-txt {
+                            width: 100%;
+                        }
+                    }
+
+                    .status-details {
+                        display: inline-block;
+                        text-align: center;
+
+                        ul {
+                            display: inline-block;
+
+                            li {
+                                height: 40px;
+                                width: 40px;
+                                margin-right: 25px;
+
+                                &:before {
+                                    left: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .announcement-wrapper {
+                .announcement-details-wrap {
+                    .announcement-details {
+                        padding: 3px 10px;
+                        text-align: center;
+
+                        .profile-member-pic,
+                        .profile-member-name {
+                            display: inline-block;
+                            width: 100%;
+                            text-align: center;
+                            float: none;
+
+                            span {
+                                display: inline-block;
+                                width: 100%;
+                            }
+                        }
+
+                    }
+                }
+            }
+
+        }
+
+        .profile-detail-wrapper {
+            margin-top: 70px;
+
+            .task-result {
+                .task-acc {
+                    margin-bottom: 90px;
+                    .nav-tabs {
+                        justify-content: center;
+
+                        .tabs-title {
+                            left: 10px;
+                            top: -40px;
+                        }
+                    }
+
+                    .tab-content {
+                        padding: 25px 10px 40px 10px;
+
+                        .tab-pane {
+                            .task-tab-list {
+                                min-height: 140px;
+                                width: 50%;
+                            }
+                        }
+                    }
+                }
+            }
+            .task-summary{
+                margin-top: 70px;
+                .task-acc{
+                    .tab-content {
+                        .tab-pane{
+                            .btn-wrapper{
+                                margin-top: 70px;
+                            }
+                        } 
+                    }  
+                } 
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+@import "../../../shared/styles/modals.scss";
+@import "../../../shared/styles/mixins/buttons.scss";
+@import "../../../shared/styles/variables.scss";
+
+.welcome-modal {
+  padding: 25px 63px 30px;
+}
+.modal-red-leaf {
+  position: relative;
+}
+.modal-red-leaf:before {
+  width: 60px;
+  text-align: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -30px;
+  margin: 0 auto;
+  height: 21px;
+  content: "";
+  background-image: url(/assets/images/title-bottom-red.png);
+}
+
+.error {
+  text-align: left;
+}

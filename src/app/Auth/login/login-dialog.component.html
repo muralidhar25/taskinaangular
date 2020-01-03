@@ -1,0 +1,46 @@
+<ng-container *ngIf="dialogVisible">
+
+<div class="modal-content modal-content-width dailogBox ">
+        <div class="upper-layer">
+                <div class="middle-layer">
+    <div class="modal-body modal-padd">
+       <button type="button" class="close" (click)="hideDialog()">&times;</button>
+       <span class="close-border">&nbsp;</span>
+       <h3 class="modal-title">{{title}}</h3>
+ 
+       <form #f="ngForm" (ngSubmit)="login(f.form.valid)" novalidate autocomplete="off">
+          <div class="group login-modal">
+             <input type="email" 
+                    name="email" 
+                    class="form-control input-email" 
+                    placeholder="Email"
+                    #email="ngModel"
+                    [(ngModel)]="credentials.email"
+                    required email maxlength="256" 
+                   >
+ 
+             <input type="password"
+                    name="password" 
+                    class="form-control input-pass" 
+                    placeholder="Password"
+                    #password="ngModel" 
+                    [(ngModel)]="credentials.password" 
+                    required mimlength="6"
+                    >
+             <p *ngIf="error" style="color: red">{{error}}</p>
+             <p class="forgot-txt padd-3"><a (click)="forgotPasword()">Forgot your password ?</a></p>
+             <input type="submit"  class="button-Secondary modal-login-btn" value="Login">
+             <p class="seperator-or padd-1">or login with </p>
+             <div class="social-btn">
+                <a href="javascript:void(0)" class="social-icons facebook-icon" (click) = "socialLogin('facebook')">Facebook</a>&nbsp;
+                <a href="javascript:void(0)" class="social-icons google-icon" (click) = "socialLogin('google')">Google</a>
+                <p class="seperator-or padd-2">You dont have an Taskina account? </p>
+                <a href="javascript:void(0)" class="signup-link"  data-target="#SignupModal" data-toggle="modal" (click)="signupDialogLink()">Sign up</a>
+             </div>
+          </div>
+       </form>
+    </div>
+ </div></div>
+</div>
+</ng-container>
+ 

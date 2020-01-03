@@ -1,0 +1,97 @@
+@import "~ngx-bootstrap/datepicker/bs-datepicker.scss";
+
+$color_1: #B4BECC;
+$color_2: #524648;
+$color_3: #fff;
+$color_4: #56CBEE;
+$font_family_1: 'Comfortaa', cursive;
+$background_color_1: #fff;
+$background_color_2: #56CBEE;
+
+
+
+bs-datepicker-container{
+  aria-label:calendar;
+  role:dialog;
+position: absolute;
+    display: block;
+    will-change: transform;
+    top: 0px;
+    left: 0px;
+    transform: translate3d(172px, 349px, 0px);
+}
+
+bs-datepicker-container, bs-daterangepicker-container {
+  z-index: 999999999;
+}
+input.form-control.RoundBorder {
+    border-radius: 0;
+    height: 50px;
+    padding-left: 50px;
+    font-size: 18px;
+    line-height: 22px;
+    color: #B4BECC;
+    font-family: 'Comfortaa', cursive;
+    border:none;
+}
+
+.bs-datepicker {
+    padding: 0;
+    border: 2px solid #56CBEE;
+    border-radius: 15px;
+    overflow: hidden
+}
+.theme-green .bs-datepicker-head {
+    background-color: #fff;
+}
+.bs-datepicker-container{
+  padding: 0;
+}
+
+.bs-datepicker-head span {
+    font-size: 15px;
+    font-family: 'Comfortaa', cursive;
+}
+.bs-datepicker-head button.current {
+    border-radius: 15px;
+    max-width: 155px;
+    padding: 0 13px;
+    color: #524648;
+    font-size: 14px;
+}
+.bs-datepicker-head {
+    min-width: 270px;
+    height: 40px;
+    padding: 5px;
+    font-family: 'Comfortaa', cursive;
+}
+thead {
+    background: #56CBEE;
+    color: #fff !important;
+}
+.bs-datepicker-body table th {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 400;
+    text-align: center;
+    padding: 5px 0;
+    font-family: 'Comfortaa', cursive;
+}
+.bs-datepicker-body{
+  padding: 0;
+}
+.theme-green .bs-datepicker-body table td span.selected, .theme-green .bs-datepicker-body table td.selected span, .theme-green .bs-datepicker-body table td span[class*="select-"]:after, .theme-green .bs-datepicker-body table td[class*="select-"] span:after {
+    background-color: #56CBEE;
+}
+.theme-green .bs-datepicker-body table td{
+   font-family: 'Comfortaa', cursive;
+}
+.theme-green .bs-datepicker-body table td.week span{
+  color: #56CBEE;
+}
+.bs-datepicker-head button.next span, .bs-datepicker-head button.previous span{
+  color: #56CBEE;
+}
+.bs-datepicker-body{
+  border: none;
+}

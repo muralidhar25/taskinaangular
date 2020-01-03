@@ -1,0 +1,52 @@
+<div class="dashboard">
+  <ng-container *ngIf="taskFilter == 'browse'; else taskinaHeader">
+    <taskina-dashboard-header></taskina-dashboard-header>
+    <taskina-actions-header ></taskina-actions-header>
+  </ng-container>
+
+  <task-tabs *ngIf = "taskFilter != 'browse'" [taskFilter]="taskFilter"></task-tabs>
+  <!-- Start banner section -->
+  <section class="banner-area-wraper index">
+    <div class="banner-slider-area"></div>
+  </section>
+  <!-- End banner section -->
+
+
+  <!-- Start dashboard box click Section -->
+  <section class="dashboard-area-wraper dashboard-task-wrapper">
+    <div class="container">
+      <ng-container *ngIf="!loading; else loadingtemplate">
+        <div class="row" *ngIf="taskData; else norecord">
+          <div class="box-task-wrapper scrollbar">
+            <task-list [searchTerm] = "searchTerm" [slug]="slug" [taskFilter]="taskFilter" [taskList]="taskList" [taskData]="taskData"></task-list>
+          </div>
+          <div class="dashboard-box-area task-detail-wrapper">
+            <task-detail
+            [posterLoggedIn]="showBid"
+            [taskData]="taskData" [taskList]="taskList" *ngIf="taskData"></task-detail>
+            <task-map *ngIf="isMap" [taskData]="taskData"></task-map>
+            <div class="member-review-wrapper">
+              <task-offer [taskData]="taskData" [showBid]="showBid"></task-offer>
+            </div>
+          </div>
+        </div>
+
+      </ng-container>
+    </div>
+  </section>
+  <!-- <taskina-post-task-dialog></taskina-post-task-dialog>
+  <confirmation-dialog></confirmation-dialog>
+  <taskina-error-dialog></taskina-error-dialog> -->
+</div>
+<ng-template #norecord>
+  <task-norecord></task-norecord>
+</ng-template>
+
+<ng-template #loadingtemplate>
+  <taskina-loadingscreen></taskina-loadingscreen>
+</ng-template>
+<make-an-offer></make-an-offer>
+
+<ng-template #taskinaHeader>
+    <taskina-dashboard-header></taskina-dashboard-header>
+</ng-template>

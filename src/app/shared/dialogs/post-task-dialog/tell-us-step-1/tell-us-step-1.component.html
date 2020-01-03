@@ -1,0 +1,49 @@
+<div class="tab-pane active" id="tab1">
+  <h3 class="modal-title mb-40">Tell us what you need done ?</h3>
+  <form #f="ngForm" (ngSubmit)="onSendData(f)" class="scrollbar" novalidate autocomplete="off">
+    <div class="step-data overflow-modal">
+      <div class="data-group">
+        <p>What do you need done? This'll be the title of your task.</p>
+        <input type="text" name="taskTitle" class="form-control input-field" placeholder="e.g. Help move my sofa"
+          #taskTitle="ngModel" [(ngModel)]="tasks.taskTitle" [ngClass]="{ error: !valid }" required minlength="10"
+          maxlength="50" />
+
+        <div *ngIf="
+            taskTitle.errors &&
+            (taskTitle.dirty || taskTitle.touched || f.submitted)
+          " [ngClass]="'error'">
+          <div *ngIf="taskTitle.errors.required">
+            Task title must be at least 10 characters long
+          </div>
+          <div *ngIf="taskTitle.errors.minlength">
+            Task title must be at least 10 characters long
+          </div>
+          <div *ngIf="taskTitle.errors.maxlength">
+            Task title cannot exceed 50 characters.
+          </div>
+        </div>
+        <p>What are the details?</p>
+        <textarea class="AboutTextarea form-control" name="taskDetails"
+          placeholder="Be as specific as you can about what needs doing" #taskDetails="ngModel"
+          [(ngModel)]="tasks.taskDetails" required [ngClass]="{ error: !valid }" minlength="25"></textarea>
+        <div *ngIf="
+            taskDetails.errors &&
+            (taskDetails.dirty || taskDetails.touched || f.submitted)
+          " [ngClass]="'error'">
+          <div *ngIf="taskDetails.errors.required">
+            Task detials must be at least 25 characters long
+          </div>
+          <div *ngIf="taskDetails.errors.minlength">
+            Task detials must be at least 25 characters long
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step-footer">
+      <div class="btn-next-con text-margin">
+        <input type="submit" class="modal-need-btn btn-next" value="Next" name="next" />
+        <a href="#tab2" data-toggle="tab" #next style="display:none"></a>
+      </div>
+    </div>
+  </form>
+</div>

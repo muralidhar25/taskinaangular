@@ -1,0 +1,55 @@
+
+<ng-container *ngIf="dialogVisible">
+
+   <div id="PostTask" class="modal-content modal-content-width dailogBox  min-595 footer-fixed">
+       <div class="upper-layer">
+       <div class="middle-layer">
+             <div class="modal-body modal-padd-2">
+                <button type="button" class="close" data-dismiss="modal" id="closeButton"  (click) = "closeDialog()">&times;</button>
+                <span class="close-border">&nbsp;</span>
+
+                 <div class="card-body-cstm">
+                        <form class="wizard-container"  id="js-wizard-form" >
+                            <div class="progress" id="js-progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"  [style.width]="currentStep*25+'%'">
+                                    <span class="progress-val">25%</span>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-content">
+                               <ng-container [ngSwitch]="currentStep">
+                                <tell-us-step
+                                [step]="currentStep"
+                                [tasks]="step1"
+                                *ngSwitchCase="stepType.TaskTitleStep"
+                                (onStepChanged)="onStepChanged($event)"
+                                ></tell-us-step>
+                                <say-where-step
+                                [step]="currentStep"
+                                [tasks]="step2"
+                                *ngSwitchCase="stepType.TaskTimeStep"
+                                (onStepChanged)="onStepChanged($event)"
+                                ></say-where-step>
+                                <suggest-how-step
+                                [step]="currentStep"
+                                [tasks]="step3"
+                                *ngSwitchCase="stepType.TaskPriceStep"
+                                (onStepChanged)="onStepChanged($event)"
+                                ></suggest-how-step>
+                                <task-posted-step
+                                [step]="currentStep"                                
+                                *ngSwitchCase="stepType.TaskPostedStep"
+                                (onStepChanged)="onStepChanged($event)"
+                                (onHideDialog)="hideDialog()"
+
+                                ></task-posted-step>
+                                
+                                </ng-container>
+                            </div>
+                        </form>
+                    </div>            
+            </div>
+       </div>
+    </div>
+       </div>
+         </ng-container>

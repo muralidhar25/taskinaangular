@@ -1,0 +1,292 @@
+<div *ngIf="offers.length > 0">
+  <div class="member-review-section">
+    <h3>Offers</h3>
+  </div>
+  <div class="member-review-box" *ngFor="let offer of offers">
+    <div class="task-member-detail">
+      <span class="member-img">
+        <img
+          *ngIf="
+            offer.user.profile_pic != 'null' &&
+              offer.user.profile_pic != '/assets/missing.png';
+            else defaultImgTemlplate
+          "
+          src="{{ offer.user.profile_pic }}"
+        />
+      </span>
+      <span style="display:block">
+        <span class="member-name">
+          {{ offer.user.first_name }} {{ offer.user.last_name }}
+        </span>
+        <span class="bid-amount" *ngIf="showBid || offer.showBid">
+          ${{ offer.total_amount }}
+          <span
+            style="font-size: 0.8rem; font-weight: 200;"
+            *ngIf="taskData.pay_type_id == 'hourly'"
+            >/Hour</span
+          >
+          <span
+            style="font-size: 0.8rem; font-weight: 200;"
+            *ngIf="taskData.pay_type_id == 'fixed'"
+          >
+            - Fixed</span
+          >
+        </span>
+      </span>
+      <span class="posted">
+        <span class="review-rating">
+          <p-rating
+            [ngModel]="offer.user.rating"
+            readonly="true"
+            [cancel]="false"
+            stars="5"
+          ></p-rating>
+        </span>
+        <span
+          class="review-percent"
+          *ngIf="
+            offer.user.completion_rate != 0 &&
+            offer.user.completion_rate != 'N/A'
+          "
+        >
+          {{ offer.user.completion_rate }}% Completion rate
+        </span>
+      </span>
+    </div>
+    <div class="review-txt">
+      <p>
+        {{ offer.cover_letter }}
+      </p>
+    </div>
+    <div class="review-stats">
+      <div class="reply">
+        <a
+          href="#"
+          data-toggle="modal"
+          data-target="#OfferBoxModal"
+          (click)="onReplyClick(offer.slug)"
+          >Reply</a
+        >
+      </div>
+      <div class="review-time">
+        <span>{{ offer.date_diff }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #defaultImgTemlplate>
+  <img src="assets/images/user2.png" />
+</ng-template>
+
+<div id="OfferBoxModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content modal-content-width">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <span class="close-border">&nbsp;</span>
+        <h3 class="modal-title">Offer Messages</h3>
+        <form #form>
+          <div class="group">
+            <div class="comment-section">
+              <div class="member-review-wrapper">
+                <div class="member-review-box">
+                  <div class="member-review-box-head">
+                    <div class="task-member-detail">
+                      <span class="member-img">
+                        <img
+                          *ngIf="
+                            offerDetails.profile_pic != 'null' &&
+                              offerDetails.profile_pic != '/assets/missing.png';
+                            else defaultImgTemlplate
+                          "
+                          [src]="offerDetails.profile_pic"
+                        />
+                      </span>
+                      <div class="group-1">
+                        <div class="line-1">
+                          <span class="member-name"
+                            >{{ offerDetails.first_name }}
+                            {{ offerDetails.last_name }}</span
+                          >
+                          <span class="posted">
+                            <i
+                              class="fa fa-star"
+                              [ngClass]="{ fill: offerDetails.rating >= 1 }"
+                              aria-hidden="true"
+                            ></i>
+                            <i
+                              class="fa fa-star"
+                              [ngClass]="{ fill: offerDetails.rating >= 2 }"
+                              aria-hidden="true"
+                            ></i>
+                            <i
+                              class="fa fa-star"
+                              [ngClass]="{ fill: offerDetails.rating >= 3 }"
+                              aria-hidden="true"
+                            ></i>
+                            <i
+                              class="fa fa-star"
+                              [ngClass]="{ fill: offerDetails.rating >= 4 }"
+                              aria-hidden="true"
+                            ></i>
+                            <i
+                              class="fa fa-star"
+                              [ngClass]="{ fill: offerDetails.rating == 5 }"
+                              aria-hidden="true"
+                            ></i>
+                          </span>
+                        </div>
+                        <span class="review-percent">
+                          Completion rate:
+                          <span class="Completion-rate">{{
+                            offerDetails.completion_rate
+                          }}</span>
+                        </span>
+                        <div class="per-hourly">
+                          <span
+                            class="per-h-rate"
+                            *ngIf="
+                              offerDetails.total_amount &&
+                              offerDetails.task.pay_type_id === 'fixed'
+                            "
+                            >${{ offerDetails.total_amount }}</span
+                          >
+                          <span
+                            class="per-h-rate"
+                            *ngIf="
+                              offerDetails.total_amount &&
+                              offerDetails.task.pay_type_id === 'hourly'
+                            "
+                            >${{
+                              offerDetails.total_amount *
+                                offerDetails.task.hours
+                            }}
+                            -
+                          </span>
+                          <span
+                            class="per-h-rate"
+                            *ngIf="offerDetails.task.pay_type_id === 'fixed'"
+                            style="font-size: 0.7rem; font-weight: 200"
+                          >
+                            Fixed</span
+                          >
+                          <span
+                            class="per-h-rate"
+                            *ngIf="offerDetails.task.pay_type_id === 'hourly'"
+                            style="font-size: 0.7rem; font-weight: 200"
+                          >
+                            ${{ offerDetails.total_amount }}/hr</span
+                          >
+                          <!-- <span class="per-h-rate">${{offerDetails.total_amount}}</span><span class="per-hour"></span> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="review-txt">
+                      <p>{{ offerDetails.cover_letter }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="scrollbar-custom">
+                  <div
+                    class="member-chat-box"
+                    #scrollMe
+                    [scrollTop]="scrollMe.scrollHeight"
+                  >
+                    <div class="member-chat-box-data">
+                      <!--data will display here-->
+                      <div
+                        class="comments-list"
+                        *ngFor="let comment of offerDetails.comments"
+                      >
+                        <div class="person-img">
+                          <img [src]="comment.user.profile_pic" />
+                        </div>
+                        <div class="comments-data">
+                          <span
+                            >{{ comment.user.first_name }}
+                            {{ comment.user.last_name }}
+                            <span class="date">{{ comment.diff }}</span></span
+                          >
+                          <p>{{ comment.content }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="chat-text-area" style="border-color: red;">
+                  <div
+                    class="text-area-widget"
+                    [ngClass]="{
+                      invalid:
+                        message.classList.contains('ng-dirty') &&
+                        !message.checkValidity()
+                    }"
+                  >
+                    <textarea
+                      class="chat-text-area"
+                      rows="3"
+                      cols="5"
+                      placeholder="Write your message"
+                      name="words"
+                      #message
+                      #message="ngModel"
+                      [(ngModel)]="model.words"
+                      required
+                      words
+                      maxlength="1500"
+                    ></textarea>
+                    <div class="chat-tools">
+                      <input
+                        id="filePicker"
+                        #file
+                        type="file"
+                        accept="image"
+                        (change)="onFileSelected($event)"
+                      />
+                      <div
+                        class="attched-link"
+                        (click)="file.click()"
+                        *ngIf="selectedFile == null"
+                      >
+                        <i class="fa fa-paperclip" aria-hidden="true"></i>
+                        Attach a file
+                      </div>
+                      <div class="file-link" *ngIf="selectedFile != null">
+                        <i class="fa fa-paperclip" aria-hidden="true"></i
+                        >{{ selectedFile["name"] }}
+                      </div>
+                      <div class="char-count">
+                        {{ 1500 - model.words.length }}
+                      </div>
+                      <div
+                        class="send-link"
+                        (click)="onSubmit();form.reset()"
+                      >
+                        Send
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="left-arrow-slide"
+            *ngIf="!leftDisable"
+            (click)="onLeftArrow()"
+          >
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+          </div>
+          <div
+            class="right-arrow-slide"
+            *ngIf="!rightDisable"
+            (click)="onRightArrow()"
+          >
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

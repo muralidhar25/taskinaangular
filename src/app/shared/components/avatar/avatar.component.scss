@@ -1,0 +1,41 @@
+div.account-photo {
+    padding:12px 9px;
+    background: #4C002E;
+    border-radius: 25px;
+    color: #ffffff;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+
+img.account-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+}
+
+div.member-img {
+    padding:6px 7px;
+    background: #4C002E;
+    border-radius: 25px;
+    color: #ffffff;
+    letter-spacing: 1px;
+    font-size: 12px;
+    float: left;
+    margin-top: 10px;
+    min-height: 32px !important;
+    width: 32px !important;
+    height: 32px !important;
+    margin-right: 10px;
+
+}
+
+img.member-img {
+    width: 32px;
+    height: 32px;
+    min-height: 32px;
+    float: left;
+    margin-top: 10px;
+    border-radius: 40px;
+    min-height: 32px !important;
+    margin-right: 10px;
+}

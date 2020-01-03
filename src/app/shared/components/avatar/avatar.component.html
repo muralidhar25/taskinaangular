@@ -1,0 +1,9 @@
+<img [ngClass]="className"
+    *ngIf="profile_pic != null && profile_pic != 'null' && profile_pic != '/assets/missing.png'; else defaultImgTemlplate"
+    src="{{profile_pic}}">
+
+<ng-template #defaultImgTemlplate>
+    <div [ngClass]="className">
+        {{profile_pic_alt}}
+    </div>
+</ng-template>

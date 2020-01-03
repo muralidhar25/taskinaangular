@@ -1,0 +1,8 @@
+<span [innerHTML]="detail"></span>
+
+<ng-container *ngIf = "linkTitle!=''" >
+    <a href = "javascript:void(0);" (click)="toggle()">
+        <span class="more-detail">{{linkTitle}} 
+        <i class="fa fa-angle-down" aria-hidden="true"></i></span>
+    </a>
+</ng-container>

@@ -1,0 +1,26 @@
+<div class="tab-pane active" id="tab1">
+  <h3 class="modal-title mb-40">Task Posted</h3>
+  <form #f="ngForm" (ngSubmit)="onNextStep()" class="scrollbar" novalidate autocomplete="off">
+    <div class="step-data overflow-modal padd-0 mt-20">
+      <img src="/assets/images/posted-task.png" class="posted-task" />
+      <div class="Pick-offer">
+        <h3 class="Pick-offer-title">Pick an offer</h3>
+        <p>
+          Now Taskers can ask questions and make offers to do your task - make sure you check back on it regularly!
+        </p>
+      </div>
+    </div>
+    <div class="step-footer">
+      <div class="dot-step">
+        <step-count [step]="step"></step-count>
+      </div>
+      <div class="btn-next-con text-margin">
+        
+          <button type="button"  class=" modal-need-btn btn-next" (click)="hideDialog()">
+            Continue
+          </button>
+        
+      </div>
+    </div>
+  </form>
+</div>

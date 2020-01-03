@@ -1,0 +1,16 @@
+@import "~src/colors";
+
+.header {
+    background-color: $background-color;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        font-size: 50px;
+        text-align: center;
+        color: $text-white;
+    }
+}

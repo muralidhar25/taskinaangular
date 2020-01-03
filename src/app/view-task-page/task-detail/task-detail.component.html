@@ -1,0 +1,88 @@
+<div *ngIf="taskDetail">
+  <div class="task-area-title">
+    <p>{{ taskDetail.title }}
+    </p>
+  </div>
+  <div class="task-member-wrapper">
+    <div class="task-top-wrap">
+      <div class="task-member-detail">
+        <user-avatar [user] = "taskDetail.created_by"  className = 'member-img'></user-avatar>
+        <span class="posted">Posted by</span>
+        <span class="member-name">{{ taskDetail.created_by.first_name }} {{ taskDetail.created_by.last_name }}</span>
+        <span class="member-time">{{ taskDetail.posted_at | date :'longDate'}}</span>
+      </div>
+      <div class="task-member-price text-center">
+        <span class="box-price" *ngIf="taskDetail.price && taskDetail.pay_type_id==='fixed'">${{ taskDetail.price }}</span>
+        <span class="box-price" *ngIf="taskDetail.price && taskDetail.pay_type_id==='hourly'">${{ taskDetail.price * taskDetail.hours}}</span>
+        <span class="box-price-type" *ngIf="taskDetail.pay_type_id==='fixed'">Fixed price</span>
+        <span class="box-price-type" *ngIf="taskDetail.pay_type_id==='hourly'">${{taskDetail.price}} / hour, Est. Time: {{taskDetail.hours}} hour(s)</span>
+
+      </div>
+      <div class="offer-btn text-right">
+        <a class="button-primary" (click)="confirmOffer()">Make an offer</a>
+      </div>
+    </div>
+    <div class="task-bottom-wrap">
+      <div class="btn-status-task">
+        <span class="btn-status btn-1" [ngClass]="{ active: taskDetail.status == 'open' }">Open</span>
+        <span class="btn-status btn-2" [ngClass]="{ active: taskDetail.status == 'assigned' }">Assigned</span>
+        <span class="btn-status btn-3" [ngClass]="{ active: taskDetail.status == 'completed' }">Completed</span>
+      </div>
+      <div class="follow-task" *ngIf="!taskDetail.follow">
+        <a href="javascript:void(0)" class="btn-status" (click) = "toggleFollow()">Follow</a>
+      </div>
+      <div class="follow-task following-status" *ngIf="taskDetail.follow">
+        <a href="javascript:void(0)" class="btn-status" (click) = "toggleFollow()">Following</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="member-map-wrapper">
+    <div class="member-date-detail">
+      <span class="due-date">Due Date</span>
+      <span class="due-time">{{ taskDetail.due_date | date :'longDate'}}<br />
+        <span *ngIf="taskDetail.part_of_day_id == 1">Morning<br />
+          Before 10am<br /></span>
+        <span *ngIf="taskDetail.part_of_day_id == 2">Midday<br />
+          10am - 2pm<br /></span>
+        <span *ngIf="taskDetail.part_of_day_id == 3">Afternoon<br />
+          2pm - 6pm<br /></span>
+        <span *ngIf="taskDetail.part_of_day_id == 4">Evening<br />
+          After 6pm<br /></span>
+        <span *ngIf="taskDetail.part_of_day_id > 4">Anytime<br />
+          No time Scheduled<br /></span>
+      </span>
+    </div>
+
+    <div class="member-date-detail member-desc">
+      <span class="due-date">Details</span>
+      <span class="due-time">
+          <read-more [content] = "taskDetail?.details" [length] = "400" [isCollapsed] = "true"></read-more>
+      </span>
+    </div>
+
+    <div class="member-date-detail member-desc">
+      <span class="due-date">Address</span>
+      <span class="due-time">
+          {{this.taskDetail.location == null ? "Remote" : this.taskDetail.location }}
+      </span>
+    </div>
+
+    <div class="member-date-detail member-desc" *ngIf = "posterLoggedIn">
+      <span class="due-date">Add Attachment</span>
+      <span class="due-time">
+        <input id="filePicker" #file type="file" accept="image" (change)="onFileSelected($event)" />
+      </span>
+    </div>
+    
+    <div class="member-date-detail member-desc">
+      <span class="due-date">Attachments</span>
+      <span class="due-time">
+        <ng-container *ngFor = "let x of taskDetail.associations_attachments">
+          <a [href] = "x.attachment.attachment_url" target = "_blank">{{x.attachment.file_name}}</a>
+          <br/>
+        </ng-container>
+      </span>
+    </div>
+  </div>
+</div>

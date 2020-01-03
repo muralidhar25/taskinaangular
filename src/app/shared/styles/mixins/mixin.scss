@@ -1,0 +1,86 @@
+/********************************************************
+Transition Mixin   
+/********************************************************/
+
+@mixin transition-3s {
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+/********************************************************
+Padding Mixin  
+/********************************************************/
+
+@mixin padding-rl-15 {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+@mixin padding-mrl-15 {
+    padding-right: -15px;
+    padding-left: -15px;
+}
+@mixin padding-none {
+    padding: 0;
+}
+@mixin padd-left-none {
+    padding-left: 0;
+}
+@mixin padd-right-none {
+    padding-right: 0;
+}
+
+/********************************************************
+Margin Mixin  
+/********************************************************/
+
+@mixin margin-mrl-15 {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+@mixin margin-rl-auto {
+    margin-right: auto;
+    margin-left: auto;
+}
+@mixin margin-mrt-15 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+@mixin margin-left-none {
+    margin-left: 0;
+}
+@mixin margin-right-none {
+    margin-right: 0;
+}
+@mixin margin-none {
+    margin: 0;
+}
+
+
+/********************************************************
+Common Mixin  
+/********************************************************/
+
+@mixin list-none {
+    list-style: none;
+}
+
+@mixin float-left {
+    float: left;
+}
+@mixin float-right {
+    float: right;
+}
+
+/********************************************************
+Font Waight Mixin  
+/********************************************************/
+
+@mixin font-600 {
+font-weight: 600;
+}
+
+@mixin font-400 {
+font-weight: 400;
+}

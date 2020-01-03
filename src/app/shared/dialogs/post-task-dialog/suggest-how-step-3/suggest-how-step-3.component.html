@@ -1,0 +1,125 @@
+<div class="tab-pane active" id="tab1">
+  <h3 class="modal-title mb-40">Suggest how much</h3>
+  <form
+    #f="ngForm"
+    (ngSubmit)="onSendData(f.form)"
+    class="scrollbar"
+    novalidate
+    autocomplete="off"
+  >
+    <div class="step-data overflow-modal">
+      <div class="data-group">
+        <p>What is your budget?</p>
+        <p class="tasker-note padd-0">
+          Please enter the price you're comfortable to pay to get your task
+          done. Taskers will use this as a guide for how much to offer.
+        </p>
+      </div>
+
+      <div class="budget-area">
+        <div class="budget-selection">
+          <a
+            class="sec-link Fixed-link "
+            [ngClass]="{ active1: budget == 'fixed' }"
+            (click)="budgetSelection('fixed')"
+            #fixed
+          >
+            Fixed Budget</a
+          >
+          <a
+            class="sec-link Hourly-link"
+            [ngClass]="{ active1: budget == 'hourly' }"
+            (click)="budgetSelection('hourly')"
+            #hourly
+          >
+            Hourly Rate</a
+          >
+        </div>
+        <div class="budget-slider">
+          <div class="slider-1 range-slider">
+            <a (click)="addPrice()">
+              <img
+                src="/assets/images/plus-symbol.png"
+                name="increasePrice"
+                class="image-symbol plus-slider"
+              />
+            </a>
+            <span class="dlr">$</span>&nbsp;
+            <input
+              type="number"
+              class="value input-value"
+              name="value-rate"
+              [(ngModel)]="price"
+              (change)="calculatePrice()"
+            />
+            <a (click)="subPrice()">
+              <img
+                src="/assets/images/minus-symbol.png"
+                name="decreasePrice"
+                class="image-symbol minus-slider"
+              />
+            </a>
+          </div>
+
+          <div class="slider-2 range-slider" *ngIf="tasks.taskBudget == '1'">
+            <a (click)="addHours()">
+              <img
+                src="/assets/images/plus-symbol.png"
+                name="increaseHour"
+                class="image-symbol plus-slider"
+              />
+            </a>
+            <input
+              type="number"
+              class="value input-value hour-format"
+              name="hour-rate"
+              [(ngModel)]="hours"
+              (change)="calculatePrice()"
+            />
+            <span class="hour-format">hrs</span>
+
+            <a (click)="subHours()">
+              <img
+                src="/assets/images/minus-symbol.png"
+                name="decreaseHour"
+                class="image-symbol minus-slider"
+              />
+            </a>
+          </div>
+          <br />
+        </div>
+        <div>
+          <p *ngIf="rangeError" class="error">
+            Please suggest a budget between $5 and $9,999 for your task
+          </p>
+        </div>
+      </div>
+
+      <div class="Estimated-budget">
+        <div class="budget-data">
+          <div class="budget-img">
+            <img src="assets/images/wallet.png" />
+          </div>
+          <p class="budget-title">Estimated budget</p>
+          <p class="budget-tag-data">Final payment will be agreed later</p>
+          <div class="budget-price">
+            <span>$</span><span>{{ finalPrice }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br /><br />
+    <div class="step-footer">
+      <div class="dot-step">
+        <step-count [step]="step"></step-count>
+      </div>
+      <div class="btn-next-con">
+        <button type="button" class="btn-back" (click)="onPrevstep()">
+          Back
+        </button>
+        <!-- <a class="btn-skip" (click) = 'onSkipStep()'>Skip</a> -->
+        <input type="submit" class="btn-next" value="Next" />
+      </div>
+    </div>
+  </form>
+</div>

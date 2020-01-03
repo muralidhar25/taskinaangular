@@ -1,0 +1,47 @@
+<div class="tab-pane" id="tab2">
+  <h3 class="modal-title mb-40">Let us know what your skills are</h3>
+  <form [formGroup]="addSkillForm" (ngSubmit)="onSendData()" class="scrollbar" autocomplete="off">
+    <div class="step-data overflow-modal">
+      <div class="data-group">
+        <p>What kind of tasks are you looking for?</p>
+        <p>
+          <p-autoComplete [suggestions]="searchedlist" (completeMethod)="searchskills($event)" [multiple]="true"
+            field="name" formControlName="skills" styleClass="search-skill">
+          </p-autoComplete>
+        </p>
+
+        <div *ngIf="submitted && f.skills.errors" class="error">
+          <div *ngIf="f.skills.errors.required">Please select atleast one skill.</div>
+        </div>
+
+        <p>Where would you be looking to do it</p>
+        <div class="radio-select">
+          <label class="radio">In Person
+            <input type="radio" checked="checked" value="person" formControlName="do_int_in" />
+            <span class="checkround"></span>
+          </label>
+          <label class="radio">Online
+            <input type="radio" formControlName="do_int_in" value="online" />
+            <span class="checkround"></span>
+          </label>
+        </div>
+        <div *ngIf="submitted && f.do_int_in.errors" class="error">
+          <div *ngIf="f.do_int_in.errors.required">This is required</div>
+          <div *ngIf="f.do_int_in.errors.serverError">{{f.do_int_in.errors.serverError}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="step-footer">
+      <div class="dot-step">
+        <step-count [step]="step"></step-count>
+      </div>
+      <div class="btn-next-con">
+        <a class="btn-back" (click)="onPrevstep()">Back</a>
+
+        <a class="btn-skip" (click)="onSkipStep()">Skip</a>
+        <!-- <a class="btn-skip" (click) = 'onSkipStep()'>Skip</a> -->
+        <input type="submit" class="btn-next" value="Next" />
+      </div>
+    </div>
+  </form>
+</div>

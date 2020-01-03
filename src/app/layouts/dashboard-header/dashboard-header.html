@@ -1,0 +1,54 @@
+<header class = "inside-header">
+    <div class="dashboard-header">
+       <a class="nav-brand" routerLink="/">
+          <img src="assets/images/logo.png" alt="">
+       </a>
+       <div class="input-search">
+          <i class="search-ico"></i>             
+          <input type="text" placeholder="Search for a task" class="search-task" [(ngModel)]="search_term"
+          (keydown.enter)="performFilter($event)"/>
+          <!--<div class="search-tool-tip">
+             <i class="search-tool-tip-arrow"></i>
+             Try searching for tasks, taskers, or keywords
+          </div>-->
+       </div>
+       <div class="dash-links">
+          <a [routerLink]="['/browse-tasks']" [routerLinkActive]="['active']">Browse Tasks</a>
+          <a href="javascript:void(0);" [routerLinkActive]="['active']">Find a Tasker</a>
+          <a href="javascript:void(0);" (click)="postTaskDialog()" class="post-task-link button-primary">Post a Task</a>
+       </div>
+       <div class="d-account">
+          <div class="icon-link">
+             <a href="javascript:void(0);"><i class="fa fa-bell" aria-hidden="true"><span class="dot-notify"></span></i></a>
+             <a href="javascript:void(0);"><i class="fa fa-envelope" aria-hidden="true"><span class="dot-notify"></span></i></a>
+          </div>
+          <div class="profile-link">
+             <a href="javascript:void(0);">
+                <user-avatar [user] = "loggedInUser" className = 'account-photo'></user-avatar>
+             </a>
+             <div class="d-tasker-submenu profile">
+                <i class="d-tasker-arrow"></i>
+                <ul>
+                   <!--<li><a href="javascript:void(0);"><i class="fa fa-diamond" aria-hidden="true"></i>Dashboard</a></li>-->
+                   <li><a [routerLink]="['/profile']"><i class="fa fa-user-o" aria-hidden="true"></i>Profile</a></li>
+                   <li><a [routerLink]="['/tasks', 'all']"><i class="fa fa-list-alt" aria-hidden="true"></i>My Tasks</a></li>
+                   <li><a href="javascript:void(0);"><i class="fa fa-list-alt" aria-hidden="true"></i>Inbox</a></li>
+                   <li><a href="javascript:void(0);"><i class="fa fa-diamond" aria-hidden="true"></i>Ongoing Tasks</a></li>
+                   <li><a [routerLink]="['/dashboard']"><i class="fa fa-list-alt" aria-hidden="true"></i>Account</a></li>
+                   <li><a href="javascript:void(0);"><i class="fa fa-handshake-o" aria-hidden="true"></i>Invite Friends</a></li>
+                   <li><a href="javascript:void(0);"><i class="fa fa-bell-o" aria-hidden="true"></i> Refer Tasker</a></li>
+                   <li><a href="javascript:void(0);"><i class="service-icon" aria-hidden="true"></i>Your Guidbook</a></li>
+                   <li><a href="javascript:void(0);"><i class="fa fa-calendar" aria-hidden="true"></i> Calendar</a></li>
+                   <li><a href="javascript:void(0);"><i class="fa fa-briefcase" aria-hidden="true"></i>Services</a></li>
+                   <li><a href="javascript:void(0);"><i class="fa fa-tachometer" aria-hidden="true"></i>Performance</a></li>
+                   <li><a href="javascript:void(0);"><i class="guidebook" aria-hidden="true"></i>Guidebook</a></li>
+                   <li><a href="javascript:void(0);"><i class="notification" aria-hidden="true"></i>Team</a></li>
+                   <li><a href="javascript:void(0);"><i class="notification" aria-hidden="true"></i>Add Services</a></li>
+                   <li><a href="javascript:void(0);"><i class="fa fa-credit-card" aria-hidden="true"></i>Taskina for Business</a></li>
+                   <li (click)="logout()" class="signout"><a href="javascript:void(0);"><i class="fa fa-sign-out" aria-hidden="true"></i>Signout</a></li>
+                </ul>
+             </div>
+          </div>
+       </div>
+    </div>
+ </header>

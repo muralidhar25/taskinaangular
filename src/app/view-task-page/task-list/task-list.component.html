@@ -1,0 +1,28 @@
+<div class="dashboard-box-area" [routerLinkActive]="['active']" *ngFor="let task of taskList"
+  [routerLink]="['/tasks', taskFilter, task.slug]" [queryParams]="{search_term: searchTerm}"
+  [routerLinkActiveOptions]="{ __change_detection_hack__: [ slug ] }">
+  <div class="box-area-title">
+    <p>{{ task.title }}</p>
+  </div>
+  <div class="box-area-details">
+    <span class="box-price" *ngIf="task.price && task.pay_type_id==='fixed'">${{ task.price }}</span>
+    <span class="box-price" *ngIf="task.price && task.pay_type_id==='hourly'">${{ task.price * task.hours }}</span>
+    <span class="box-price-type" *ngIf="task.pay_type_id==='fixed'">Fixed Price</span>
+    <span class="box-price-type" *ngIf="task.pay_type_id==='hourly'">${{task.price}} / hour <br>Est. Time:
+      {{task.hours}} hour(s)</span>
+
+    <span class="box-date">{{ task.due_date | date :'longDate' }}</span>
+    <span class="box-place"
+      *ngIf="task.type_id === 'in_person' && task.zip_code">{{ task.zip_code.code + "," + task.zip_code.city.name + "," + task.zip_code.state.name }}</span>
+    <span class="box-place" *ngIf="task.type_id === 'remotely'">Remote</span>
+  </div>
+  <div class="box-area-profile">
+    <span class="box-status" *ngIf="task.status_id == 'open'">Open</span>
+    <span class="box-status" *ngIf="task.status_id == 'assigned'">Assigned</span>
+    <span class="box-status" *ngIf="task.status_id == 'completed'">Completed</span>
+
+    <span class="box-profile-image">
+      <user-avatar [user]="task.created_by" className='member-img'></user-avatar>
+    </span>
+  </div>
+</div>

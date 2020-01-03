@@ -1,0 +1,49 @@
+<div class="dashboard">
+  <taskina-dashboard-header></taskina-dashboard-header>
+  <taskina-actions-header></taskina-actions-header>
+
+  <!-- Start banner section -->
+  <section class="banner-area-wraper index">
+    <div class="banner-slider-area"></div>
+  </section>
+  <!-- End banner section -->
+
+  <!-- Start dashboard box section -->
+  <section class="dashboard-area-wraper">
+    <div class="container">
+      <ng-container *ngIf="!loading;">
+        <div class="row" *ngIf="filteredTasks && filteredTasks.length > 0; else norecord">
+          <div class="col-lg-4 col-md-6 col-12 padd" *ngFor="let x of filteredTasks"
+            [routerLink]="['/tasks', 'browse', x.slug]" [queryParams]="{search_term: searchTerm}">
+            <div class="dashboard-box-area">
+              <div class="box-area-title">
+                <p>{{ x.title }}.</p>
+              </div>
+              <div class="box-area-details">
+                <span class="box-price" *ngIf="x.price && x.pay_type_id==='fixed'">${{ x.price }}</span>
+                <span class="box-price" *ngIf="x.price && x.pay_type_id==='hourly'">${{ x.price * x.hours }}</span>
+                <span class="box-price-type" *ngIf="x.pay_type_id==='fixed'">Fixed Price</span>
+                <span class="box-price-type" *ngIf="x.pay_type_id==='hourly'">${{x.price}} / hour <br>Est. Time: {{x.hours}} hour(s)</span>
+                <span class="box-date">{{ x.due_date | date: 'longDate'}}</span>
+                <span class="box-place"
+                  *ngIf="x.type_id === 'in_person' && x.zip_code">{{ x.zip_code.code + "," + x.zip_code.city.name + "," + x.zip_code.state.name }}</span>
+                <span class="box-place" *ngIf="x.type_id === 'remotely'">Remote</span>
+              </div>
+              <div class="box-area-profile">
+                <span class="box-status" *ngIf="x.status_id == 'open'">Open</span>
+                <span class="box-status" *ngIf="x.status_id == 'assigned'">Assigned</span>
+                <span class="box-status" *ngIf="x.status_id == 'completed'">Completed</span>
+                <user-avatar [user]="x.created_by" className='member-img'></user-avatar>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </section>
+  <!-- End dashboard box section -->
+</div>
+
+<ng-template #norecord>
+  <task-norecord></task-norecord>
+</ng-template>

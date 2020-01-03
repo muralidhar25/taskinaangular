@@ -1,0 +1,92 @@
+<ng-container *ngIf="dialogVisible">
+  <div id="WelcomeTaskina" class="after-sign-up modal-content modal-content-width dailogBox">
+    <div class="upper-layer">
+      <div class="middle-layer">
+        <div class="modal-body modal-padd welcome-modal">
+          <button type="button" class="close" id="closeButton" (click) = "closeDialog()">
+            &times;
+          </button>
+          <span class="close-border">&nbsp;</span>
+          <h3 class="modal-title modal-red-leaf">Welcome To Taskina</h3>
+          <span class="welcome-title">Tell us about yourself to <br />setup your profile:</span>
+          <br />
+          <br />
+          <form [formGroup]="afterSignupForm" (ngSubmit)="onSendData()" class="scrollbar" autocomplete="off">
+              <div class="step-data overflow-modal">
+            <div class="">
+
+              <div class="form-group">
+                <input type="text" formControlName="first_name" class="form-control" placeholder="First Name"
+                  [ngClass]="{ 'ng-invalid': submitted && f.first_name.errors }" />
+                  <ng-container *ngIf="submitted && f.first_name.errors">
+                    <div class = "error" *ngIf="f.first_name.errors.required">First Name is required</div>
+                  </ng-container>
+              </div>
+              <div class="form-group">
+                <input type="text" formControlName="last_name" class="form-control" placeholder="Last Name"
+                  [ngClass]="{ 'ng-invalid': submitted && f.last_name.errors }" />
+                  <ng-container *ngIf="submitted && f.last_name.errors">
+                    <div class = "error" *ngIf="f.last_name.errors.required">Last Name is required</div>
+                  </ng-container>
+              </div>
+
+
+              <div class="form-group">
+
+                <!-- <input
+                  type="text"
+                  class="form-control"
+                  formControlName="suburb"
+                  list="searchaddress"
+                  [ngClass]="{ 'ng-invalid': submitted && f.suburb.errors }"
+                  placeholder="Enter your suburb"
+                />
+                <datalist id="searchaddress">
+                  <option *ngFor="let code of searchedlist">{{
+                    code.full_name
+                  }}</option>
+                </datalist> -->
+
+           
+
+                <p-autoComplete [suggestions]="searchedlist" (completeMethod)="searchSuburb($event)"
+                  field="full_name" dataKey = "id" formControlName="suburb" placeholder='Enter your suburb'
+                  [ngClass]="{ 'ng-invalid': submitted && f.suburb.errors }" inputStyleClass="form-control" 
+                  styleClass="single-autocomplete"
+                  >
+                </p-autoComplete>
+                <ng-container *ngIf="submitted && f.suburb.errors">
+                  <div class = "error" *ngIf="f.suburb.errors.required">Suburb is required</div>
+                </ng-container>
+              </div>
+
+
+              <div class="like-check-box">
+                <span class="checkboxtitle">What would you like to use Taskina for ?</span>
+                <div class="check-box">
+                  <label class="check">I want to get things done
+                    <input type="checkbox" formControlName="get_things_done" />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="check-box">
+                  <label class="check">
+                    I want to earn money
+                    <input type="checkbox" formControlName="earn_money" />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+              </div>
+            <div class="form-group">
+              <button #btnclick class="button-Secondary modal-login-btn">
+                Continue
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,751 @@
+/********************************************************
+0. Chaining Extends | Import Variables & Mixins   
+/********************************************************/
+
+@import "variable";
+@import "mixin";
+@import "profile";
+
+/********************************************************
+11. Profile Account 
+/********************************************************/
+
+/********************************************************
+11-A. left Section
+/********************************************************/
+.dashboard-account-wraper {
+    .account-menu-wrapper {
+        .profile-submenu {
+            .member-profile-area {
+                padding: 15px 15px 10px 15px;
+
+                .profile-member-pic {
+                    i {
+                        color: #33A9CC;
+                        font-size: 35px;
+                    }
+                }
+
+                .profile-member-name {
+                    .rating {
+                        color: #4C002E;
+                        font-family: $font-family-default;
+                        font-size: 14px;
+                        line-height: 19px;
+                    }
+                }
+            }
+
+            .account-menu-wrap {
+                display: inline-block;
+                width: 100%;
+                margin-top: -7px;
+
+                ul {
+                    margin: 0;
+                    padding: 0;
+
+                    li {
+                        list-style-type: none;
+                        border-bottom: 1.5px solid #DEF4FA;
+                        position: relative;
+
+                        a {
+                            display: inline-block;
+                            width: 100%;
+                            color: #33A9CC;
+                            font-family: $font-family-default;
+                            font-size: 16px;
+                            line-height: 22px;
+                            padding: 13px 15px 13px 20px;
+
+                            i {
+                                padding-right: 15px;
+                                font-size: 20px;
+                            }
+
+                            .service-icon,
+                            .guidebook,
+                            .notification {
+                                position: relative;
+                                padding-left: 20px;
+
+                                &:before {
+                                    background-image: url(assets/images/service-icon.png);
+                                    content: "";
+                                    height: 22px;
+                                    width: 22px;
+                                    position: absolute;
+                                    left: 0;
+                                    top: 5px;
+                                    background-repeat: no-repeat;
+                                    background-position: 0 0;
+                                    background-size: 100%;
+                                }
+                            }
+
+                            .guidebook {
+                                &:before {
+                                    background-image: url(assets/images/guidebook-icon.png);
+                                    top: 0;
+                                    height: 28px;
+                                }
+                            }
+
+                            .notification {
+                                &:before {
+                                    background-image: url(assets/images/notification.png);
+                                    top: 0;
+                                    height: 25px;
+                                    width: 25px;
+                                }
+                            }
+
+                        }
+
+                        &:last-child {
+                            border-bottom: none;
+                        }
+
+                        &:hover {
+                            border-bottom: 1.5px solid #DEF4FA;
+                            position: relative;
+
+                            a {
+                                background: #EFFCFF;
+                                /*font-size: 18px;*/
+
+                                i {
+                                    /*font-size: 24px;*/
+                                }
+
+                                &:before {
+                                    width: 0;
+                                    height: 0;
+                                    border-style: solid;
+                                    border-width: 10px 16px 10px 0;
+                                    border-color: transparent #CBF3FF transparent transparent;
+                                    position: absolute;
+                                    content: "";
+                                    right: 0px;
+                                    top: 17px;
+                                }
+                            }
+                        }
+                    }
+
+                    .active {
+                        a {
+                            background: #EFFCFF;
+                            font-size: 18px;
+
+                            i {
+                                font-size: 24px;
+                            }
+
+                            &:before {
+                                width: 0;
+                                height: 0;
+                                border-style: solid;
+                                border-width: 10px 16px 10px 0;
+                                border-color: transparent #CBF3FF transparent transparent;
+                                position: absolute;
+                                content: "";
+                                right: 0px;
+                                top: 17px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/********************************************************
+11-B. Right Section
+/********************************************************/
+
+.dashboard-account-wraper {
+    .account-detail-wrapper {
+        border: 3px solid #DEF4FA;
+        border-radius: 20px;
+        margin-top: 5px;
+        overflow: hidden;
+        background: #fff;
+
+        .account-info-wrapper {
+            display: inline-block;
+            width: 100%;
+            padding: 15px 20px 15px 30px;
+            border-bottom: 2px solid #DEF4FA;
+            background: #fff;
+
+            .member-profile-area {
+                display: inline-block;
+                width: 49%;
+
+                .profile-member-pic {
+                    float: left;
+
+                    .member-percent {
+                        height: 50px;
+                        width: 50px;
+                        border-radius: 50%;
+                        background: #EDEDED;
+                        float: left;
+                        margin-right: 30px;
+                        position: relative;
+
+                        .progress-circle {
+                            position: absolute;
+                            width: 100%;
+                            z-index: 1;
+                            right: 0px;
+                            top: 0px;
+                            width: 25px;
+                            line-height: 25px;
+                            font-size: 10px;
+                            color: transparent;
+                            display: block;
+                            text-align: center;
+                            white-space: nowrap;
+                            -webkit-transition-property: all;
+                            -moz-transition-property: all;
+                            -o-transition-property: all;
+                            transition-property: all;
+                            -webkit-transition-duration: 0.2s;
+                            -moz-transition-duration: 0.2s;
+                            -o-transition-duration: 0.2s;
+                            transition-duration: 0.2s;
+                            -webkit-transition-timing-function: ease-out;
+                            -moz-transition-timing-function: ease-out;
+                            -o-transition-timing-function: ease-out;
+                            transition-timing-function: ease-out;
+                            overflow: hidden;
+
+                            &:before {
+                                content: "";
+                                background: #2EB67D;
+                                position: absolute;
+                                right: 0px;
+                                width: 100%;
+                                height: 100%;
+                                top: 0px;
+                                overflow: hidden;
+                                border-top-right-radius: 20px;
+                            }
+                        }
+
+                        i {
+                            position: absolute;
+                            color: #fff;
+                            font-size: 30px;
+                            top: 10px;
+                            left: 10px;
+                            z-index: 1;
+                        }
+                    }
+                }
+
+                .profile-member-name {
+                    float: left;
+
+                    span {
+                        display: block;
+                    }
+
+                    .name {
+                        color: #4C002E;
+                        font-family: $font-family-Comfortaa;
+                        font-size: 20px;
+                        font-weight: bold;
+                        line-height: 28px;
+                    }
+
+                    .rating {
+                        color: #B4BECC;
+                        font-family: $font-family-Comfortaa;
+                        font-size: 14px;
+                        line-height: 18px;
+                        display: flex;
+                    }
+                }
+            }
+
+            .acc-preview {
+                display: inline-block;
+                width: 49%;
+                text-align: right;
+                float: right;
+                padding-top: 15px;
+
+                a {
+                    color: #33A9CC;
+                    font-family: $font-family-default;
+                    font-size: 16px;
+                    line-height: 22px;
+                }
+            }
+        }
+
+        .avatar-wrap {
+            padding-left: 35px;
+            padding-top: 20px;
+
+            .member-profile-area {
+                .avatar {
+                    .member-percent {
+                        border: 3px solid #CBF3FF;
+                        background-color: #D0F7FF;
+                        height: 96px;
+                        width: 96px;
+
+                        i {
+                            color: #6BD5F3;
+                            font-size: 42px;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                        }
+                    }
+                      .account-photo{
+                        padding: 30px 32px;
+                        background: #4C002E;
+                        border-radius: 50%;
+                        color: #ffffff;                     
+                        font-size: 21px;
+                        font-weight: bolder !important;
+                        margin-right:30px;
+                      }
+                }
+             
+                .profile-member-name  {
+                    padding-top: 10px;
+                
+                    .name {
+                        color: #4A4A4A;
+                        font-family: $font-family-Comfortaa;
+                        font-size: 16px;
+                        font-weight: bold;
+                        line-height: 22px;
+                        padding-bottom: 15px;
+                    }
+
+                    .rating {
+                        color: #34C5F0;
+                        font-family: $font-family-default;
+                        font-size: 16px;
+                        font-weight: bold;
+                        line-height: 16px;
+                    }
+                    button,
+input[type="file"] {
+  overflow: visible;
+  display: none;
+}
+                }
+            }
+        }
+
+        .account-form-wrap {
+            display: inline-block;
+            width: 100%;
+            padding: 20px 20px 10px 30px;
+
+            .form-wrap {
+                position: relative;
+
+                p {
+                    color: #4A4A4A;
+                    font-family: $font-family-Comfortaa;
+                    font-size: 16px;
+                    font-weight: bold;
+                    line-height: 22px;
+                }
+
+                .form-group {
+                    float: left;
+                    width: 50%;
+                    position: relative;
+                    margin-bottom: 30px;
+
+                    .placeholder {
+                        position: absolute;
+                        left: 0;
+                        top: 16px;
+                        font-size: 14px;
+                        color: #B4BECC;
+                        transition: all 0.5s ease;
+                        pointer-events: none;
+                        line-height: 18px;
+                        font-family: $font-family-Comfortaa;
+                    }
+
+                    input[type=text]:focus ~ .placeholder, 
+                    input[type=text]:valid ~ .placeholder, 
+                    .placeholder.valid, 
+                    p-autoComplete:focus-within ~ .placeholder {
+                        display: block;
+                        color: #B4BECC;
+                        top: -5px;
+                        font-size: 10px;
+                    }
+
+                    input {
+                        outline: none;
+                        border: 0;
+                        border-bottom: 1px solid #DCDCDC;
+                        height: 40px;
+                        width: 100%;
+                        max-width: 280px;
+                        color: #4C002E;
+                        font-family: $font-family-Comfortaa;
+                        font-size: 16px;
+                        font-weight: bold;
+                        line-height: 22px;
+                        background: transparent;
+                    }
+                }
+
+                .alternate {
+                    float: left;
+                    width: 45%;
+                }
+
+                .txt-area {
+                    border: 1px solid #CAD0D6;
+                    border-radius: 16px;
+                    padding: 15px;
+                    height: 140px;
+                    float: right;
+                    width: 42%;
+                    margin-right: 85px;
+                    margin-top: 30px;
+
+                    textarea {
+                        outline: none;
+                        border: none;
+                        color: #4C002E;
+                        font-family: $font-family-Comfortaa;
+                        font-size: 14px;
+                        font-weight: normal;
+                        line-height: 18px;
+                        width: 100%;
+                        overflow: auto;
+                        resize: none;
+                        background: transparent;
+                    }
+
+                    textarea::-webkit-input-placeholder {
+                        color: #B4BECC;
+                    }
+
+                    textarea:-moz-placeholder {
+                        /* Firefox 18- */
+                        color: #B4BECC;
+                    }
+
+                    textarea::-moz-placeholder {
+                        /* Firefox 19+ */
+                        color: #B4BECC;
+                    }
+
+                    textarea:-ms-input-placeholder {
+                        color: #B4BECC;
+                    }
+
+                    textarea::placeholder {
+                        color: #B4BECC;
+                    }
+
+                }
+            }
+        }
+
+        .deactive-wrap {
+            border-bottom: none;
+
+            .form-wrap {
+                display: block;
+
+                p {
+
+                    /* Base for label styling */
+                    [type="checkbox"]:not(:checked),
+                    [type="checkbox"]:checked {
+                        position: absolute;
+                        left: -9999px;
+                    }
+
+                    [type="checkbox"]:not(:checked) + label,
+                    [type="checkbox"]:checked + label {
+                        position: relative;
+                        padding-left: 35px;
+                        cursor: pointer;
+                    }
+
+                    /* checkbox aspect */
+                    [type="checkbox"]:not(:checked) + label:before,
+                    [type="checkbox"]:checked + label:before {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 22px;
+                        height: 22px;
+                        border: 1px solid #DBDBDB;
+                        background: #fff;
+                        border-radius: 2px;
+                    }
+
+                    /* checked mark aspect */
+                    [type="checkbox"]:not(:checked) + label:after,
+                    [type="checkbox"]:checked + label:after {
+                        content: "\f00c";
+                        position: absolute;
+                        top: 0;
+                        left: 3px;
+                        font-size: 16px;
+                        line-height: 20px;
+                        color: #E0245A;
+                        transition: all .2s;
+                        font-family: FontAwesome;
+                    }
+
+                    /* checked mark aspect changes */
+                    [type="checkbox"]:not(:checked) + label:after {
+                        opacity: 0;
+                        transform: scale(0);
+                    }
+
+                    [type="checkbox"]:checked + label:after {
+                        opacity: 1;
+                        transform: scale(1);
+                    }
+
+                    /* disabled checkbox */
+                    [type="checkbox"]:disabled:not(:checked) + label:before,
+                    [type="checkbox"]:disabled:checked + label:before {
+                        box-shadow: none;
+                        border-color: #DBDBDB;
+                        background-color: #fff;
+                    }
+
+                    [type="checkbox"]:disabled:checked + label:after {
+                        color: #4A4A4A;
+                    }
+
+                    [type="checkbox"]:disabled + label {
+                        color: #4A4A4A;
+                    }
+
+
+                    label {
+                        color: #4A4A4A;
+                        font-family: Comfortaa;
+                        font-size: 16px;
+                        line-height: 22px;
+                        font-weight: normal;
+                    }
+                }
+            }
+
+            .btn-wrap {
+                display: inline-block;
+                width: 100%;
+                margin: 40px 0 0;
+
+                .acc-btn {
+                    display: inline-block;
+                    width: 50%;
+
+                    a {
+                        padding: 6px 20px;
+                        font-size: 18px;
+                    }
+                }
+
+                .acc-preview {
+                    display: inline-block;
+                    width: 50%;
+                    text-align: right;
+                    float: right;
+                    padding-top: 5px;
+                    padding-right: 30px;
+
+                    a {
+                        color: #E0245A;
+                        font-family: $font-family-default;
+                        font-size: 18px;
+                        font-weight: bold;
+                        line-height: 24px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/********************************************************
+Media Queries
+/********************************************************/
+
+@media (max-width:1024px) {
+    .dashboard-account-wraper {
+        .account-detail-wrapper {
+            .account-form-wrap {
+                .form-wrap {
+                    .form-group input {
+                        max-width: 260px;
+                    }
+
+                    .txt-area {
+                        width: 40%;
+                        margin-top: 15px;
+                        margin-right: 80px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:991px) {
+    .dashboard-account-wraper {
+        .profile-member-wrapper {
+            display: block;
+            margin: 0 auto;
+            .profile-details {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width:767px) {
+    .dashboard-account-wraper {
+        .account-detail-wrapper {
+            .account-info-wrapper {
+                width: 100%;
+                padding: 15px 10px;
+
+                .member-profile-area {
+                    width: 100%;
+
+                    .profile-member-pic {
+                        .member-percent {
+                            margin-right: 10px;
+                        }
+                    }
+
+                    .profile-member-name {
+                        float: none;
+
+                        .name {
+                            font-size: 18px;
+                        }
+                    }
+                }
+
+                .acc-preview {
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+
+            .avatar-wrap {
+                .member-profile-area {
+                    .profile-member-name {
+                        .name {
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+
+            .account-form-wrap {
+                padding: 15px 10px;
+
+                .form-wrap {
+                    .alternate {
+                        width: 100%;
+                    }
+
+                    .form-group {
+                        width: 100%;
+                    }
+
+                    .txt-area {
+                        float: left;
+                        margin: 0 0 15px 0;
+                    }
+                }
+            }
+
+            .deactive-wrap {
+                .btn-wrap {
+                    margin: 20px 0 0;
+
+                    .acc-btn,
+                    .acc-preview {
+                        width: 100%;
+                        text-align: center;
+                    }
+
+                    .acc-preview {
+                        padding-right: 0;
+                        padding-top: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/********************************************************
+Password Section
+/********************************************************/
+
+.passowrd-from{
+    .alternate{
+        width: 100% !important;
+    }
+    .form-group{
+        width: 100% !important;
+        margin-bottom: 10px !important;
+        margin-top: 20px !important;
+        input{
+            max-width: 390px !important;
+        }   
+    }
+    
+    input:focus ~ .placeholder {
+        display: block !important;
+        color: #B4BECC !important;
+        top: -5px !important;
+        font-size: 10px !important;
+    }
+     input:valid ~ .placeholder {
+        display: block !important;
+        color: #B4BECC !important;
+        top: -5px !important;
+        font-size: 10px !important;
+    }
+    
+    .acc-btn{
+        margin: 40px 0 50px 0;
+        float: left;
+    }
+    .acc-btn a:hover{
+        padding: 6px 50px !important;
+    }
+    .text-danger{
+        display: block;
+        width: 100%;
+        font-size: 14px;
+    }
+}

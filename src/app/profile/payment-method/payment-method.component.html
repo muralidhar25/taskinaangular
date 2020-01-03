@@ -1,0 +1,208 @@
+<section
+  class="dashboard-area-wraper dashboard-profile-wrapper dashboard-account-wraper payment-method"
+>
+  <div class="account-info-wrapper castm-padd">
+    <div class="member-profile-area">
+      <div class="title-name">
+        <span class="name">Payment Methods</span>
+      </div>
+    </div>
+  </div>
+  <div class="account-form-wrap payment-method-area">
+    <form #cardform="ngForm" id="cardform" (ngSubmit)="saveCard(cardform)">
+      <div class="form-wrap">
+        <div class="desc-txt no-border-btm">
+          <p>
+            When you accept a Tasker offer you will be required to pay for the
+            task using our platform. Your payment will be held securely until
+            the task is complete and you release the payment to the Tosker.
+          </p>
+        </div>
+        <div class="acc-btn">
+          <a
+            class="button-Secondary"
+            (click)="isButtonVisible = !isButtonVisible; new = !new"
+            *ngIf="isButtonVisible"
+            ><i class="fa fa-plus" aria-hidden="true"></i> Add Credit card</a
+          >
+        </div>
+
+        <ng-container *ngIf="new || update">
+          <div class="form-fields">
+            <span class="form-field-title">New Credit Card</span>
+            <span class="text-danger form-error" id="errors" *ngIf="errors"
+              ><i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+              {{ errors }}</span
+            >
+            <div class="form-group alternate">
+              <input
+                type="text"
+                placeholder
+                required
+                tabindex="1"
+                id="name"
+                name="name"
+                #name="ngModel"
+                [(ngModel)]="newCard.name"
+              />
+              <label class="placeholder"> Name in Credit Card</label>
+              <span class="enter"></span>
+              <span
+                class="text-danger"
+                *ngIf="
+                  cardform.submitted && name.errors && name.errors.required
+                "
+                >Require Credit Card name</span
+              >
+            </div>
+            <div class="form-group alternate">
+              <input
+                type="text"
+                placeholder
+                required
+                tabindex="2"
+                id="number"
+                name="number"
+                #number="ngModel"
+                [(ngModel)]="newCard.number"
+                required
+              />
+              <label class="placeholder">Credit Card Number</label
+              ><span class="enter"></span>
+              <span
+                class="text-danger"
+                id="errors"
+                *ngIf="
+                  cardform.submitted && number.errors && number.errors.required
+                "
+              >
+                Require Credit Card Number
+              </span>
+            </div>
+
+            <div class="form-group alternate select-area">
+              <label class="select-title">Expiration Date</label>
+              <div class="select-drop">
+                <select name="Month" id="month" [(ngModel)]="newCard.month">
+                  <option value="01">01</option>
+                  <option value="02">02</option>
+                  <option value="03">03</option>
+                  <option value="04">04</option>
+                  <option value="05">05</option>
+                  <option value="06">06</option>
+                  <option value="07">07</option>
+                  <option value="08">08</option>
+                  <option value="09">09</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>
+              </div>
+              <div class="select-drop year-select">
+                <select name="year" id="year" [(ngModel)]="newCard.year" #year>
+                  <option value="2019">2019</option>
+                  <option value="2020">2020</option>
+                  <option value="2021">2021</option>
+                  <option value="2022">2022</option>
+                  <option value="2023">2023</option>
+                  <option value="2024">2024</option>
+                  <option value="2025">2025</option>
+                  <option value="2026">2026</option>
+                  <option value="2027">2027</option>
+                  <option value="2028">2028</option>
+                  <option value="2029">2029</option>
+                  <option value="2030">2030</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group alternate cvv-area">
+              <i class="fa fa-credit-card" aria-hidden="true"></i>
+              <input
+                type="text"
+                placeholder
+                required
+                tabindex="4"
+                id="cvv"
+                [(ngModel)]="newCard.cvv"
+                name="cvv"
+                #cvv="ngModel"
+              />
+              <label class="placeholder">CVV</label><span class="enter"></span>
+              <span
+                class="text-danger"
+                id="errors"
+                *ngIf="cardform.submitted && cvv.errors && cvv.errors.required"
+              >
+                Require CVV number
+              </span>
+            </div>
+          </div>
+
+          <div class="form-wrap" *ngIf="new">
+            <div class="check-box">
+              <label class="check"
+                >I agree with
+                <a href="" class="terms-link">Terms &amp; Conditions</a>
+                <input type="checkbox" name="timeofday" [(ngModel)]="tac" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="acc-btn">
+            <input type="submit" class="button-Secondary" value="Save" />
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="!isButtonVisible && !new && !update">
+          <div class="alert alert-success" *ngIf="success">
+            Card Successfully Updated
+          </div>
+          <div
+            class="payment-card"
+            [ngClass]="{
+              'master-card-img':
+                cardDetails !== undefined &&
+                cardDetails !== null &&
+                cardDetails.cc_type == 'MasterCard'
+            }"
+          >
+            <div class="pcard-number">
+              <span>
+                {{
+                  cardDetails === undefined || cardDetails === null
+                    ? ""
+                    : cardDetails.cc_type
+                }}</span
+              ><span class="hide-numbers">
+                {{
+                  cardDetails === undefined || cardDetails === null
+                    ? ""
+                    : "**** **** **** " + cardDetails.last_digits
+                }}
+              </span>
+            </div>
+            <div class="expires-data">
+              <span>Expires</span
+              ><span class="expires-numbers">{{
+                cardDetails === undefined || cardDetails === null
+                  ? ""
+                  : cardDetails.month + "/" + cardDetails.year
+              }}</span>
+            </div>
+
+            <div class="payment-action">
+              <a (click)="update = !update">Update</a>
+              <a href="#">Delete</a>
+            </div>
+          </div>
+
+          <div class="terms-area">
+            <a href="" class="terms-link">Terms &amp; Conditions</a>
+          </div>
+        </ng-container>
+      </div>
+    </form>
+  </div>
+</section>

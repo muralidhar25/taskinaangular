@@ -1,0 +1,96 @@
+image: node:10.0.0
+
+pipelines:
+  default:
+     - step:
+         name: "start"
+         script:
+           - echo 'default pipeline'           
+     - step:
+         name: "install dependencies"
+         caches:
+           - node
+         script:
+           - npm i          
+           - npm run lint
+           - npm run build-prod
+         artifacts:
+           - dist/**            
+     - step:
+         name: "deploy"
+         caches:
+           - node
+         script:
+           - echo 'deplying on dev environment'     
+           - pipe: atlassian/aws-s3-deploy:0.2.4
+             variables:
+               AWS_ACCESS_KEY_ID: '$AWS_S3_ACCESS_KEY_ID_WEB_DEV'
+               AWS_SECRET_ACCESS_KEY: '$AWS_S3_ACCESS_KEY_WEB_DEV'
+               AWS_DEFAULT_REGION: '$AWS_S3_REGION_DEV'
+               S3_BUCKET: '$AWS_S3_BUCKET_DEV'
+               LOCAL_PATH: 'dist/taskina'
+               ACL: '$AWS_S3_ACL_DEV'
+               CACHE_CONTROL: 'max-age=1,s-maxage=1'               
+  branches:
+    develop:
+     - step:
+         name: "start"
+         script:
+           - echo 'develop branch pipeline'           
+     - step:
+         name: "install dependencies"
+         caches:
+           - node
+         script:
+           - npm i          
+           - npm run lint
+           - npm run build-prod
+         artifacts:
+           - dist/**            
+     - step:
+         name: "deploy"       
+         caches:
+           - node
+         script:
+           - echo 'deplying on stage environment'     
+           - pipe: atlassian/aws-s3-deploy:0.2.4
+             variables:
+               AWS_ACCESS_KEY_ID: '$AWS_S3_ACCESS_KEY_ID_WEB'
+               AWS_SECRET_ACCESS_KEY: '$AWS_S3_ACCESS_KEY_WEB'
+               AWS_DEFAULT_REGION: '$AWS_S3_REGION'
+               S3_BUCKET: '$AWS_S3_BUCKET'
+               LOCAL_PATH: 'dist/taskina'
+               ACL: '$AWS_S3_ACL'
+               CACHE_CONTROL: 'max-age=1,s-maxage=1'
+    master:
+     - step:
+         name: "start"
+         script:
+           - echo 'master branch pipeline'           
+     - step:
+         name: "install dependencies"
+         caches:
+           - node
+         script:
+           - npm i          
+           - npm run lint
+           - npm run build-prod
+         artifacts:
+           - dist/**            
+     - step:
+         name: "deploy"
+         trigger: manual
+         caches:
+           - node
+         script:
+           - echo 'deplying on prod environment'     
+           - pipe: atlassian/aws-s3-deploy:0.2.4
+             variables:
+               AWS_ACCESS_KEY_ID: '$AWS_S3_ACCESS_KEY_ID_WEB_PROD'
+               AWS_SECRET_ACCESS_KEY: '$AWS_S3_ACCESS_KEY_WEB_PROD'
+               AWS_DEFAULT_REGION: '$AWS_S3_REGION_PROD'
+               S3_BUCKET: '$AWS_S3_BUCKET_PROD'
+               LOCAL_PATH: 'dist/taskina'
+               ACL: '$AWS_S3_ACL_PROD'
+               CACHE_CONTROL: 'max-age=1,s-maxage=1'             
+

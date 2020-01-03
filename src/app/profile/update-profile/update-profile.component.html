@@ -1,0 +1,154 @@
+
+  <div class="account-info-wrapper">
+    <div class="member-profile-area">
+        <div class="profile-member-pic">
+            <span class="member-percent" ><span class="progress-circle">50%</span><i class="fa fa-check" aria-hidden="true"></i></span>
+        </div>
+        <div class="profile-member-name">
+            <span class="name">Account information</span>
+            <span class="rating name-txt">Your profile is 18% complete</span>
+        </div>
+    </div>
+
+    <div class="acc-preview">
+        <a href="#">Preview my account</a>
+    </div>
+</div>
+
+<div class="account-info-wrapper avatar-wrap">
+    <div class="member-profile-area">
+            <div class="profile-member-pic avatar">
+          <user-avatar  *ngIf="!model.profile_pic" [user] = "loggedInUser" className = 'account-photo' ></user-avatar>
+              <div *ngIf="model.profile_pic" >
+                    <img class="member-percent"[src]="loggedInUser.profile_pic">
+                  </div>
+                </div>
+        <div class="profile-member-name accountphoto">
+            <span class="name">Setup your Avatar</span>
+             <input id="filePicker" #file type="file" accept="image" (change)="onFileSelected($event)" />
+            <a class="rating" (click)="file.click()"><span><i class="fa fa-pencil-square-o" aria-hidden="true"> </i></span>Add image</a>
+        </div>
+    </div>
+</div>
+
+<div class="account-form-wrap">
+    <form  (ngSubmit) ="onSubmit(f)" autocomplete="off" #f="ngForm">
+        <div class="form-wrap">
+            <p>Please provide your contact information</p>
+            <div class="form-group alternate">
+           <input type="text" placeholder required tabindex="1" [(ngModel)]="model.first_name"
+           required name="fname" #fname="ngModel">
+           
+           <label class="placeholder">First name</label>
+              <div *ngIf="
+                fname.errors &&
+                (fname.dirty ||fname.touched || f.submitted)
+              " [ngClass]="'error'" class="errDivProfile">
+              <div *ngIf="fname.errors.required">
+                  First name is required!
+              </div>
+            </div>
+            </div>
+
+            <div class="form-group">
+                <input type="text" placeholder required tabindex="2" [(ngModel)]="model.last_name"
+                required name="lname" #lname="ngModel"><label class="placeholder">Last name</label>
+                <div *ngIf="
+                lname.errors &&
+                (lname.dirty ||lname.touched || f.submitted)
+              " [ngClass]="'error'" class="errDivProfile">
+              <div *ngIf="lname.errors.required">
+                    Last name is required!
+              </div>
+            </div>
+
+
+            </div>
+            <div class="form-group alternate">
+                <input type="text" 
+                    placeholder required tabindex="3" 
+                    class="form-control RoundBorder" 
+                    [minDate]="minDate" [maxDate]="maxDate" 
+                    [(ngModel)]="model.dob"
+                    name="birthday" #birthday="ngModel" #dp="bsDatepicker" 
+                    bsDatepicker #task [(bsValue)]="myDateValue" />
+                <label class="placeholder">Birthday</label>
+                <span class="enter"></span>
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder required tabindex="4"  [(ngModel)]="model.tag_line" name="tagline"><label class="placeholder">Tagline</label><span class="enter"></span>
+            </div>
+          
+            <div class="form-group">
+                <style>
+                    #p-highlighted-option {
+                        border: 1px solid red !important;
+                    }
+                </style>
+            <p-autoComplete 
+                (onSelect)="searchbar($event)"  
+                [suggestions]="zipCodesArr" 
+                (completeMethod)="searchZipCode($event.query)" 
+                [(ngModel)]="model.location" name="location">
+            </p-autoComplete>
+            <label class="placeholder" [ngClass]="{'valid': model.location !== '' }">Location</label>
+               
+              <p *ngIf="
+            location.loc &&
+            location.loc.length > 2 &&
+            !zipCodesArr.includes(location.loc)
+          " class="error errDivProfile">
+          Select from the list.
+        </p>
+            </div>
+
+            <div class="form-group txt-area alternate">
+                <textarea  name="enquiry" cols="5" rows="4" [(ngModel)]="model.description" placeholder="Enter a short description about yourself and what you want to do on Taskina" tabindex="6"></textarea>
+                <span class="enter"></span>
+            </div>
+
+            <div class="form-group alternate">
+                <input type="text" placeholder required tabindex="7"  [(ngModel)]="model.email" name="email" #email="ngModel"
+                required
+                email
+                maxlength="256"><label class="placeholder">Email</label><span class="enter"></span>
+            </div>  
+        </div>
+  
+
+<div class="account-form-wrap deactive-wrap">
+    <div class="form-wrap">
+        <p>What would you like to use Taskina for ?</p>
+        <p><input
+            type="checkbox"
+            [checked]="model.get_things_done"
+            id="test1"
+            (change)="model.get_things_done = !model.get_things_done"/><label for="test1" >I want to get things done</label></p>
+        <p><input
+            type="checkbox"
+            [checked]="model.earn_money"
+            id="test2"
+            (change)="model.earn_money = !model.earn_money"/><label for="test2">I want to earn money</label></p>
+    </div>
+
+    <div class="text-danger" *ngIf="errorMsg != ''">
+        {{this.errorMsg}}
+    </div>
+
+    <div class="btn-wrap">
+        <div class="acc-btn">
+          <button
+          type="submit"
+          class="button-Secondary"
+          value="Save Profile">Save Profile
+    </button>
+        </div>
+
+        <div class="acc-preview">
+            <a href="#">Deactivate my account</a>
+        </div>
+    </div>
+</div>
+</form>
+</div>
+

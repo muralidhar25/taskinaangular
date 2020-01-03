@@ -1,0 +1,57 @@
+<ng-container *ngIf="dialogVisible">
+  <div id="ConfirmOffer" class="modal-content modal-content-width dailogBox">
+    <div class="upper-layer">
+      <div class="middle-layer">
+        <div class="modal-body modal-padd">
+          <button type="button" class="close" (click)="dialogVisible = false">
+            &times;
+          </button>
+          <span class="close-border">&nbsp;</span>
+          <h3 class="modal-title">{{ title }}</h3>
+           <form>
+              <div class="group">
+                       <div class="ListedOffer">
+                          <div class="offerbox">
+                          <h5>Upload a profile picture</h5>
+                        
+                          <p *ngIf = "getProfileImg == 'null'" routerLink="/profile" (click)="hideDialog()"><i class="fa fa fa-clock-o clock-rtick" aria-hidden="true"></i> Profile photo not set <a href=""><i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
+                          <p *ngIf = "getProfileImg != 'null'"><i class="fa fa-check-circle right-rtick" aria-hidden="true"></i> Profile photo set <a href=""><i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
+                          
+                        </div>
+
+                           <div class="offerbox">
+                          <h5>Provide your bank account detail</h5>
+                              
+                                <p><i class="fa fa fa-clock-o clock-rtick" aria-hidden="true"></i> Enter your bank detail <a href=""><i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
+                          
+                        </div>
+                           
+                           
+                           <div class="offerbox">
+                          <h5>Provide a billing address</h5>
+                              <p><i class="fa fa fa-clock-o clock-rtick" aria-hidden="true"></i> Enter your belling address <a href=""><i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
+                          </div>
+                           
+                           
+                           <div class="offerbox">
+                          <h5>Provide a date of bith </h5>
+                              <p><i class="fa fa fa-clock-o clock-rtick" aria-hidden="true"></i> Enter your date of bith <a href=""><i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
+                          </div>
+                           
+                           
+                           <div class="offerbox">
+                          <h5>Provide a mobile number</h5>
+                              <p><i class="fa fa fa-clock-o clock-rtick" aria-hidden="true"></i> Enter your mobile number <a href=""><i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
+                          </div>
+                           
+                       </div>
+                  <div class="action-btn NoHPadd">
+                      <a href="#" class="button-Secondary ConfirmOfferBtn">Continue</a>
+                 </div>
+              </div>
+           </form>
+       </div>
+     </div>
+  </div>
+</div>
+ </ng-container>

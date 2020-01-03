@@ -1,0 +1,85 @@
+<ng-container *ngIf="dialogVisible">
+  <div class="modal-content modal-content-width dailogBox">
+    <div class="upper-layer">
+      <div class="middle-layer">
+        <div class="modal-body modal-padd">
+          <button type="button" class="close" (click)="hideDialog()">
+            &times;
+          </button>
+          <span class="close-border">&nbsp;</span>
+          <h3 class="modal-title">{{ title }}</h3>
+          <form
+            #f="ngForm"
+            (ngSubmit)="signup(f.form.valid)"
+            novalidate
+            autocomplete="off"
+          >
+            <div class="group login-modal">
+              <input
+                type="text"
+                name="email"
+                class="form-control input-email"
+                placeholder="Email"
+                [(ngModel)]="model.email"
+                id="email"
+                name="email"
+                #email="ngModel"
+                required
+                email
+                maxlength="256"
+              />
+              <input
+                type="password"
+                name="password"
+                class="form-control input-pass"
+                placeholder="Password"
+                [(ngModel)]="model.password"
+                id="password"
+                name="password"
+                #password="ngModel"
+                minlength="6"
+                required
+              />
+              <p *ngIf="error" style="color: red">{{ error }}</p>
+              <p *ngIf="emailExist">
+                <span style="color: red">This email is already taken. </span>
+                <a class="login-link" data-target="#LoginModal" (click)="loginDialogLink()"  data-toggle="modal" href="">Login?</a>
+              </p>
+              <p class="login-txt">
+                By signing up, you confirm that you’ve read and accepted our
+                <a class="modal-link">Terms & Conditions</a> and
+                <a href="" class="modal-link">Privacy Policy</a>.
+              </p>
+              <input
+                type="submit"
+                class="button-primary modal-send-btn"
+                value="Join Taskina"
+              />
+              <p class="seperator-or padd-1">or login with</p>
+              <div class="social-btn">
+                <a href="javascript:void(0)" class="social-icons facebook-icon" (click) = "socialLogin('facebook')">Facebook</a>&nbsp;
+                <a href="javascript:void(0)" class="social-icons google-icon" (click) = "socialLogin('google')">Google</a>
+                <p class="seperator-or padd-2">
+                  Already have an Taskina account?
+                </p>
+                <a
+                  href=""
+                  class="login-link"
+                  data-target="#LoginModal"
+                  data-toggle="modal"
+                  (click)="loginDialogLink()"
+                  >Login</a
+                >
+              </div>
+            </div>
+          </form>
+          <p class="login-guidelines">
+            More info you will found on <br /><a href=""
+              >Community Guidelines</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
