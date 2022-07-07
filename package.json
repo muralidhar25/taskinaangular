@@ -28,7 +28,7 @@
     "font-awesome": "^4.7.0",
     "fontawesome": "^5.6.3",
     "jquery": "^3.4.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "ngx-bootstrap": "^4.0.0",
     "ngx-mask": "^7.9.9",
     "ngx-notification": "^1.0.5",
